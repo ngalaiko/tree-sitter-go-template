@@ -1,0 +1,68 @@
+============================================
+comment
+============================================
+{{ /* comment */ }}
+{{ /* multi
+line
+comment */ }}
+---
+
+(template
+    (comment)
+    (text)
+    (comment))
+
+============================================
+pipeline
+============================================
+{{ pipeline }}
+---
+
+(template
+    (pipeline_stub))
+
+=============================================
+if
+=============================================
+{{if pipeline}} t1 {{end}}
+---
+(template
+    (if_action
+        (pipeline_stub)
+        (text)))
+
+=============================================
+if_else
+=============================================
+{{if pipeline}} t1 {{ else }} t2 {{ end }}
+---
+(template
+    (if_action
+        (pipeline_stub)
+        (text)
+        (text)))
+
+=============================================
+if-else
+=============================================
+{{if pipeline}} t1 {{ else if pipeline }} t2 {{ end }}
+---
+(template
+    (if_action
+        (pipeline_stub)
+        (text)
+        (pipeline_stub)
+        (text)))
+
+=============================================
+if-else_else
+=============================================
+{{if pipeline}} t1 {{ else if pipeline }} t2 {{ else }} t3 {{ end }}
+---
+(template
+    (if_action
+    (pipeline_stub)
+    (text)
+    (pipeline_stub)
+    (text)
+    (text)))
