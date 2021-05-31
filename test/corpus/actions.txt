@@ -106,3 +106,13 @@ template with argument
     (template_action
         (interpreted_string_literal)
         (pipeline_stub)))
+
+=============================================
+define
+=============================================
+{{define "name"}} t1 {{ end }}
+---
+(template
+    (define_action
+        (interpreted_string_literal)
+        (text)))

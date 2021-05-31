@@ -78,6 +78,7 @@ module.exports = grammar({
         $.if_action,
         $.range_action,
         $.template_action,
+        $.define_action,
     ),
 
     _comment_action: $ => seq(
@@ -98,21 +99,21 @@ module.exports = grammar({
         field('condition', $._pipeline),
         $._right_delimiter,
 
-        field('consequence', repeat1($._block)),
+        field('consequence', repeat($._block)),
 
         repeat(prec.left(seq(
             $._left_delimiter,
             'else if',
             field('condition', $._pipeline),
             $._right_delimiter,
-            field('option', repeat1($._block)),
+            field('option', repeat($._block)),
         ))),
 
         optional(seq(
             $._left_delimiter,
             'else',
             $._right_delimiter,
-            field('alternative', repeat1($._block)),
+            field('alternative', repeat($._block)),
         )),
 
         $._left_delimiter,
@@ -126,13 +127,13 @@ module.exports = grammar({
         field('range', $._pipeline),
         $._right_delimiter,
 
-        field('body', repeat1($._block)),
+        field('body', repeat($._block)),
 
         optional(seq(
             $._left_delimiter,
             'else',
             $._right_delimiter,
-            field('alternative', repeat1($._block)),
+            field('alternative', repeat($._block)),
         )),
 
         $._left_delimiter,
@@ -145,6 +146,19 @@ module.exports = grammar({
         'template',
         field('name', $._string_literal),
         optional(field('argument', $._pipeline)),
+        $._right_delimiter,
+    ),
+
+    define_action: $ => seq(
+        $._left_delimiter,
+        'define',
+        field('name', $._string_literal),
+        $._right_delimiter,
+
+        field('body', repeat($._block)),
+
+        $._left_delimiter,
+        'end',
         $._right_delimiter,
     ),
 

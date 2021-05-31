@@ -1,5 +1,75 @@
 [
   {
+    "type": "define_action",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": " -",
+            "named": false
+          },
+          {
+            "type": "- ",
+            "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
+            "named": true
+          },
+          {
+            "type": "if_action",
+            "named": true
+          },
+          {
+            "type": "pipeline_stub",
+            "named": true
+          },
+          {
+            "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "template_action",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "raw_string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "if_action",
     "named": true,
     "fields": {
@@ -17,6 +87,10 @@
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
             "named": true
           },
           {
@@ -61,7 +135,7 @@
       },
       "consequence": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": " -",
@@ -73,6 +147,10 @@
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
             "named": true
           },
           {
@@ -119,6 +197,10 @@
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
             "named": true
           },
           {
@@ -189,6 +271,10 @@
             "named": true
           },
           {
+            "type": "define_action",
+            "named": true
+          },
+          {
             "type": "if_action",
             "named": true
           },
@@ -220,7 +306,7 @@
       },
       "body": {
         "multiple": true,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": " -",
@@ -232,6 +318,10 @@
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
             "named": true
           },
           {
@@ -286,6 +376,10 @@
       "types": [
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "define_action",
           "named": true
         },
         {
@@ -356,6 +450,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "define",
+    "named": false
   },
   {
     "type": "else",

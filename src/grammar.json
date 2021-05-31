@@ -47,6 +47,10 @@
         {
           "type": "SYMBOL",
           "name": "template_action"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "define_action"
         }
       ]
     },
@@ -111,7 +115,7 @@
           "type": "FIELD",
           "name": "consequence",
           "content": {
-            "type": "REPEAT1",
+            "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
               "name": "_block"
@@ -150,7 +154,7 @@
                   "type": "FIELD",
                   "name": "option",
                   "content": {
-                    "type": "REPEAT1",
+                    "type": "REPEAT",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_block"
@@ -183,7 +187,7 @@
                   "type": "FIELD",
                   "name": "alternative",
                   "content": {
-                    "type": "REPEAT1",
+                    "type": "REPEAT",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_block"
@@ -238,7 +242,7 @@
           "type": "FIELD",
           "name": "body",
           "content": {
-            "type": "REPEAT1",
+            "type": "REPEAT",
             "content": {
               "type": "SYMBOL",
               "name": "_block"
@@ -267,7 +271,7 @@
                   "type": "FIELD",
                   "name": "alternative",
                   "content": {
-                    "type": "REPEAT1",
+                    "type": "REPEAT",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_block"
@@ -329,6 +333,54 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_right_delimiter"
+        }
+      ]
+    },
+    "define_action": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_left_delimiter"
+        },
+        {
+          "type": "STRING",
+          "value": "define"
+        },
+        {
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_string_literal"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_right_delimiter"
+        },
+        {
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_block"
+            }
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_left_delimiter"
+        },
+        {
+          "type": "STRING",
+          "value": "end"
         },
         {
           "type": "SYMBOL",
