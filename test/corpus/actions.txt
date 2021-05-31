@@ -116,3 +116,24 @@ define
     (define_action
         (interpreted_string_literal)
         (text)))
+
+=============================================
+block
+=============================================
+{{block "name"}} T1 {{end}}
+---
+(template
+    (block_action
+        (interpreted_string_literal)
+        (text)))
+
+=============================================
+block with argument
+=============================================
+{{block "name" pipeline }} T1 {{end}}
+---
+(template
+    (block_action
+    (interpreted_string_literal)
+    (pipeline_stub)
+    (text)))

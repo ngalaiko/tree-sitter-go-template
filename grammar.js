@@ -79,6 +79,7 @@ module.exports = grammar({
         $.range_action,
         $.template_action,
         $.define_action,
+        $.block_action,
     ),
 
     _comment_action: $ => seq(
@@ -153,6 +154,20 @@ module.exports = grammar({
         $._left_delimiter,
         'define',
         field('name', $._string_literal),
+        $._right_delimiter,
+
+        field('body', repeat($._block)),
+
+        $._left_delimiter,
+        'end',
+        $._right_delimiter,
+    ),
+
+    block_action: $ => seq(
+        $._left_delimiter,
+        'block',
+        field('name', $._string_literal),
+        optional(field('argument', $._pipeline)),
         $._right_delimiter,
 
         field('body', repeat($._block)),

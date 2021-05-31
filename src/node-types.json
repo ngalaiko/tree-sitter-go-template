@@ -1,5 +1,89 @@
 [
   {
+    "type": "block_action",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pipeline_stub",
+            "named": true
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": " -",
+            "named": false
+          },
+          {
+            "type": "- ",
+            "named": false
+          },
+          {
+            "type": "block_action",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "define_action",
+            "named": true
+          },
+          {
+            "type": "if_action",
+            "named": true
+          },
+          {
+            "type": "pipeline_stub",
+            "named": true
+          },
+          {
+            "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "template_action",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "raw_string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "define_action",
     "named": true,
     "fields": {
@@ -14,6 +98,10 @@
           {
             "type": "- ",
             "named": false
+          },
+          {
+            "type": "block_action",
+            "named": true
           },
           {
             "type": "comment",
@@ -86,6 +174,10 @@
             "named": false
           },
           {
+            "type": "block_action",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -146,6 +238,10 @@
             "named": false
           },
           {
+            "type": "block_action",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -194,6 +290,10 @@
           {
             "type": "- ",
             "named": false
+          },
+          {
+            "type": "block_action",
+            "named": true
           },
           {
             "type": "comment",
@@ -267,6 +367,10 @@
             "named": false
           },
           {
+            "type": "block_action",
+            "named": true
+          },
+          {
             "type": "comment",
             "named": true
           },
@@ -315,6 +419,10 @@
           {
             "type": "- ",
             "named": false
+          },
+          {
+            "type": "block_action",
+            "named": true
           },
           {
             "type": "comment",
@@ -374,6 +482,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "block_action",
+          "named": true
+        },
         {
           "type": "comment",
           "named": true
@@ -445,6 +557,10 @@
   },
   {
     "type": "- ",
+    "named": false
+  },
+  {
+    "type": "block",
     "named": false
   },
   {
