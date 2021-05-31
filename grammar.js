@@ -77,6 +77,7 @@ module.exports = grammar({
         $._pipeline_action,
         $.if_action,
         $.range_action,
+        $.template_action,
     ),
 
     _comment_action: $ => seq(
@@ -139,10 +140,49 @@ module.exports = grammar({
         $._right_delimiter,
     ),
 
+    template_action: $ => seq(
+        $._left_delimiter,
+        'template',
+        field('name', $._string_literal),
+        optional(field('argument', $._pipeline)),
+        $._right_delimiter,
+    ),
+
     // todo: implement
     _pipeline: $ => $.pipeline_stub,
 
     pipeline_stub: $ => token('pipeline'),
+
+     _string_literal: $ => choice(
+      $.raw_string_literal,
+      $.interpreted_string_literal
+    ),
+
+    raw_string_literal: $ => token(seq(
+      '`',
+      repeat(/[^`]/),
+      '`'
+    )),
+
+    interpreted_string_literal: $ => seq(
+      '"',
+      repeat(choice(
+        token.immediate(prec(1, /[^"\n\\]+/)),
+        $.escape_sequence
+      )),
+      '"'
+    ),
+
+    escape_sequence: $ => token.immediate(seq(
+      '\\',
+      choice(
+        /[^xuU]/,
+        /\d{2,3}/,
+        /x[0-9a-fA-F]{2,}/,
+        /u[0-9a-fA-F]{4}/,
+        /U[0-9a-fA-F]{8}/
+      )
+    )),
 
     // http://stackoverflow.com/questions/13014947/regex-to-match-a-c-style-multiline-comment/36328890#36328890
     comment: $ => token(choice(

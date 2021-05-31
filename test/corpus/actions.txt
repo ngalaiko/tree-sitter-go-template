@@ -32,7 +32,7 @@ if
         (text)))
 
 =============================================
-if_else
+if else
 =============================================
 {{if pipeline}} t1 {{ else }} t2 {{ end }}
 ---
@@ -55,7 +55,7 @@ if-else
         (text)))
 
 =============================================
-if-else_else
+if-else else
 =============================================
 {{if pipeline}} t1 {{ else if pipeline }} t2 {{ else }} t3 {{ end }}
 ---
@@ -78,7 +78,7 @@ range
         (text)))
 
 =============================================
-range_else
+range else
 =============================================
 {{range pipeline}} t1 {{ else }} t2 {{ end }}
 ---
@@ -87,3 +87,22 @@ range_else
         (pipeline_stub)
         (text)
         (text)))
+
+=============================================
+template
+=============================================
+{{template "name"}}
+---
+(template
+    (template_action
+        (interpreted_string_literal)))
+
+=============================================
+template with argument
+=============================================
+{{template "name" pipeline}}
+---
+(template
+    (template_action
+        (interpreted_string_literal)
+        (pipeline_stub)))

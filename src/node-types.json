@@ -32,6 +32,10 @@
             "named": true
           },
           {
+            "type": "template_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -84,6 +88,10 @@
             "named": true
           },
           {
+            "type": "template_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -126,6 +134,10 @@
             "named": true
           },
           {
+            "type": "template_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -139,6 +151,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "interpreted_string_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -171,6 +198,10 @@
           },
           {
             "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "template_action",
             "named": true
           },
           {
@@ -213,6 +244,10 @@
           },
           {
             "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "template_action",
             "named": true
           },
           {
@@ -266,6 +301,10 @@
           "named": true
         },
         {
+          "type": "template_action",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         }
@@ -273,7 +312,41 @@
     }
   },
   {
+    "type": "template_action",
+    "named": true,
+    "fields": {
+      "argument": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pipeline_stub",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "raw_string_literal",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": " -",
+    "named": false
+  },
+  {
+    "type": "\"",
     "named": false
   },
   {
@@ -297,6 +370,10 @@
     "named": false
   },
   {
+    "type": "escape_sequence",
+    "named": true
+  },
+  {
     "type": "if",
     "named": false
   },
@@ -306,6 +383,14 @@
   },
   {
     "type": "range",
+    "named": false
+  },
+  {
+    "type": "raw_string_literal",
+    "named": true
+  },
+  {
+    "type": "template",
     "named": false
   },
   {
