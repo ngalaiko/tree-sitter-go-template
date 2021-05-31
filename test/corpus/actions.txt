@@ -137,3 +137,24 @@ block with argument
     (interpreted_string_literal)
     (pipeline_stub)
     (text)))
+
+=============================================
+with
+=============================================
+{{with pipeline}} T1 {{end}}
+---
+(template
+    (with_action
+    (pipeline_stub)
+    (text)))
+
+=============================================
+with else
+=============================================
+{{with pipeline}} T1 {{else}} T0 {{end}}
+---
+(template
+    (with_action
+    (pipeline_stub)
+    (text)
+    (text)))
