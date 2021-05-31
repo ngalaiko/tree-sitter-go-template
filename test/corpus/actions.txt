@@ -61,8 +61,29 @@ if-else_else
 ---
 (template
     (if_action
-    (pipeline_stub)
-    (text)
-    (pipeline_stub)
-    (text)
-    (text)))
+        (pipeline_stub)
+        (text)
+        (pipeline_stub)
+        (text)
+        (text)))
+
+=============================================
+range
+=============================================
+{{range pipeline}} t1 {{ end }}
+---
+(template
+    (range_action
+        (pipeline_stub)
+        (text)))
+
+=============================================
+range_else
+=============================================
+{{range pipeline}} t1 {{ else }} t2 {{ end }}
+---
+(template
+    (range_action
+        (pipeline_stub)
+        (text)
+        (text)))

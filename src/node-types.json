@@ -28,6 +28,10 @@
             "named": true
           },
           {
+            "type": "range_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -76,6 +80,10 @@
             "named": true
           },
           {
+            "type": "range_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -114,6 +122,10 @@
             "named": true
           },
           {
+            "type": "range_action",
+            "named": true
+          },
+          {
             "type": "text",
             "named": true
           },
@@ -124,6 +136,106 @@
           {
             "type": "}}",
             "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "range_action",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": " -",
+            "named": false
+          },
+          {
+            "type": "- ",
+            "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "if_action",
+            "named": true
+          },
+          {
+            "type": "pipeline_stub",
+            "named": true
+          },
+          {
+            "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
+          }
+        ]
+      },
+      "body": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": " -",
+            "named": false
+          },
+          {
+            "type": "- ",
+            "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "if_action",
+            "named": true
+          },
+          {
+            "type": "pipeline_stub",
+            "named": true
+          },
+          {
+            "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
+          }
+        ]
+      },
+      "range": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pipeline_stub",
+            "named": true
           }
         ]
       }
@@ -147,6 +259,10 @@
         },
         {
           "type": "pipeline_stub",
+          "named": true
+        },
+        {
+          "type": "range_action",
           "named": true
         },
         {
@@ -187,6 +303,10 @@
   {
     "type": "pipeline_stub",
     "named": true
+  },
+  {
+    "type": "range",
+    "named": false
   },
   {
     "type": "text",
