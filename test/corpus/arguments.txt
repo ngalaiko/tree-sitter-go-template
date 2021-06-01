@@ -1,0 +1,98 @@
+====================================
+Nil
+====================================
+{{ nil }}
+---
+(template
+    (nil))
+
+====================================
+Dot field
+====================================
+{{ . }}
+---
+(template
+    (dot))
+
+====================================
+Field
+====================================
+{{ .Field }}
+---
+(template
+    (field
+        (identifier)))
+
+====================================
+Chained fields
+====================================
+{{ .Field.Field2 }}
+---
+(template
+    (selector_expression
+        (field
+            (identifier))
+        (field_identifier)))
+
+====================================
+Variable without name
+====================================
+{{ $ }}
+---
+(template
+    (variable))
+
+====================================
+Unnamed variable with field
+====================================
+{{ $.Field }}
+---
+(template
+    (selector_expression
+        (variable)
+        (field_identifier)))
+
+====================================
+Unnamed variable with chained field
+====================================
+{{ $.Field.Field2 }}
+---
+(template
+    (selector_expression
+        (selector_expression
+            (variable)
+            (field_identifier))
+        (field_identifier)))
+
+====================================
+Named variable
+====================================
+{{ $var }}
+---
+(template
+    (variable
+        (identifier)))
+
+====================================
+Named variable with field
+====================================
+{{ $var.Field }}
+---
+(template
+    (selector_expression
+        (variable
+            (identifier))
+        (field_identifier)))
+
+====================================
+Named variable with chained field
+====================================
+{{ $var.Field.Field2 }}
+---
+(template
+    (selector_expression
+        (selector_expression
+            (variable
+                (identifier))
+            (field_identifier))
+        (field_identifier)))

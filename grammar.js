@@ -198,12 +198,91 @@ module.exports = grammar({
         $._right_delimiter,
     ),
 
-    // todo: implement
-    _pipeline: $ => $.pipeline_stub,
+    _pipeline: $ => choice(
+        $.pipeline_stub, // todo: remove
+        $._expression,
+    ),
 
     pipeline_stub: $ => token('pipeline'),
 
-     _string_literal: $ => choice(
+    _expression: $ => choice(
+        $._literal,
+        $.nil,
+        $.dot,
+        $.field,
+        $.variable,
+        $.selector_expression,
+    ),
+
+    selector_expression: $ => seq(
+        field('operand', $._expression),
+        '.',
+        field('field', $._field_identifier),
+    ),
+
+    _field_identifier: $ => alias($.identifier, $.field_identifier),
+
+    field: $ => seq(
+        '.',
+        field('name', $.identifier),
+    ),
+
+    variable: $ => seq(
+        '$',
+        optional(field('name', $.identifier)),
+    ),
+
+    identifier: $ => token(seq(
+      letter,
+      repeat(choice(letter, unicodeDigit))
+    )),
+
+    _literal: $ => choice(
+        $._boolean_literal,
+        $._string_literal,
+        $.rune_literal,
+        $.int_literal,
+        $.float_literal,
+        $.imaginary_literal,
+    ),
+
+    int_literal: $ => token(intLiteral),
+
+    float_literal: $ => token(floatLiteral),
+
+    imaginary_literal: $ => token(imaginaryLiteral),
+
+    rune_literal: $ => token(seq(
+      "'",
+      choice(
+        /[^'\\]/,
+        seq(
+          '\\',
+          choice(
+            seq('x', hexDigit, hexDigit),
+            seq(octalDigit, octalDigit, octalDigit),
+            seq('u', hexDigit, hexDigit, hexDigit, hexDigit),
+            seq('U', hexDigit, hexDigit, hexDigit, hexDigit, hexDigit, hexDigit, hexDigit, hexDigit),
+            seq(choice('a', 'b', 'f', 'n', 'r', 't', 'v', '\\', "'", '"'))
+          )
+        )
+      ),
+      "'"
+    )),
+
+    _boolean_literal: $ => choice(
+        $.true,
+        $.false,
+    ),
+
+    true: $ => 'true',
+    false: $ => 'false',
+
+    nil: $ => 'nil',
+
+    dot: $ => prec(1, '.'),
+
+    _string_literal: $ => choice(
       $.raw_string_literal,
       $.interpreted_string_literal
     ),
