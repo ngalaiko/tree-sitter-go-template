@@ -201,6 +201,18 @@ module.exports = grammar({
     _pipeline: $ => choice(
         $.pipeline_stub, // todo: remove
         $._expression,
+        $.function_call,
+    ),
+
+    function_call: $ => prec(PREC.primary, seq(
+        field('function', $.identifier),
+        optional(field('arguments', $.argument_list))),
+    ),
+
+    argument_list: $ => seq(
+        $._expression,
+        repeat(seq(' ', $._expression)),
+        optional(' '),
     ),
 
     pipeline_stub: $ => token('pipeline'),
@@ -214,11 +226,11 @@ module.exports = grammar({
         $.selector_expression,
     ),
 
-    selector_expression: $ => seq(
+    selector_expression: $ => prec(PREC.primary, seq(
         field('operand', $._expression),
         '.',
         field('field', $._field_identifier),
-    ),
+    )),
 
     _field_identifier: $ => alias($.identifier, $.field_identifier),
 

@@ -1,0 +1,36 @@
+====================================
+Function without arguments
+====================================
+{{ functionName }}
+---
+(template
+    (function_call
+        (identifier)))
+
+====================================
+Function with argument
+====================================
+{{ functionName $ }}
+---
+(template
+    (function_call
+        (identifier)
+        (argument_list
+            (variable))))
+
+====================================
+Function with arguments
+====================================
+{{ functionName $ . .Field.Field2 1 }}
+---
+(template
+    (function_call
+        (identifier)
+        (argument_list
+            (variable)
+            (dot)
+            (selector_expression
+                (field
+                    (identifier))
+                (field_identifier))
+            (int_literal))))
