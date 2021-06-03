@@ -41,6 +41,23 @@ A function call whose final argument comes from the previous command.
                 (interpreted_string_literal)))))
 
 ====================================
+A parenthesized argument.
+====================================
+{{printf "%q" (print "out" "put")}}
+---
+(template
+    (function_call
+        (identifier)
+        (argument_list
+            (interpreted_string_literal)
+            (parenthesized_pipeline
+                (function_call
+                    (identifier)
+                    (argument_list
+                        (interpreted_string_literal)
+                        (interpreted_string_literal)))))))
+
+====================================
 A more elaborate call.
 ====================================
 {{"put" | printf "%s%s" "out" | printf "%q"}}

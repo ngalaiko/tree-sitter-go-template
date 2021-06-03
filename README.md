@@ -9,5 +9,4 @@ Golang templates grammar for [tree-sitter][].
 
 todo:
 ---------------------------
-* [ ] parenthesis
 * [ ] variables

@@ -203,13 +203,20 @@ module.exports = grammar({
         $.function_call,
         $.method_call,
         $.chained_pipeline,
+        $.parenthesized_pipeline,
     ),
 
-    chained_pipeline: $ => prec.left(seq(
+    chained_pipeline: $ => prec.left(PREC.primary, seq(
         $._pipeline,
         '|',
         $._pipeline,
     )),
+
+    parenthesized_pipeline: $ => seq(
+        '(',
+        $._pipeline,
+        ')',
+    ),
 
     method_call: $ => seq(
         field('method', choice(
@@ -219,16 +226,16 @@ module.exports = grammar({
         field('arguments', $.argument_list),
     ),
 
-    function_call: $ => prec(PREC.primary, seq(
+    function_call: $ => prec.right(PREC.primary, seq(
         field('function', $.identifier),
         optional(field('arguments', $.argument_list))),
     ),
 
-    argument_list: $ => seq(
-        $._expression,
-        repeat(seq(' ', $._expression)),
+    argument_list: $ => prec.right(seq(
+        $._pipeline,
+        repeat(seq(' ', $._pipeline)),
         optional(' '),
-    ),
+    )),
 
     pipeline_stub: $ => token('pipeline'),
 
@@ -242,7 +249,7 @@ module.exports = grammar({
     )),
 
     selector_expression: $ => prec(PREC.primary, seq(
-        field('operand', $._expression),
+        field('operand', $._pipeline),
         '.',
         field('field', $._field_identifier),
     )),
