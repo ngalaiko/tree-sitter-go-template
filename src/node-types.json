@@ -103,6 +103,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -190,6 +194,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -324,6 +332,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -508,6 +520,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -598,6 +614,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -685,6 +705,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -802,6 +826,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -873,6 +901,36 @@
     }
   },
   {
+    "type": "method_call",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "method": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "field",
+            "named": true
+          },
+          {
+            "type": "selector_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "range_action",
     "named": true,
     "fields": {
@@ -934,6 +992,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -1051,6 +1113,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -1138,6 +1204,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -1303,6 +1373,10 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "nil",
           "named": true
         },
@@ -1387,6 +1461,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {
@@ -1516,6 +1594,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -1606,6 +1688,10 @@
             "named": true
           },
           {
+            "type": "method_call",
+            "named": true
+          },
+          {
             "type": "nil",
             "named": true
           },
@@ -1693,6 +1779,10 @@
           },
           {
             "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
             "named": true
           },
           {

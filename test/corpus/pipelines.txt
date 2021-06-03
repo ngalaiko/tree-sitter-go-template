@@ -34,3 +34,71 @@ Function with arguments
                     (identifier))
                 (field_identifier))
             (int_literal))))
+
+====================================
+Method without arguments
+====================================
+{{ .Method }}
+---
+(template
+    (field (identifier)))
+
+====================================
+Method with argument
+====================================
+{{ .Method $ }}
+---
+(template
+    (method_call
+        (field
+            (identifier))
+        (argument_list
+            (variable))))
+
+====================================
+Method with arguments
+====================================
+{{ .Method $ . .Field.Field2 1 }}
+---
+(template
+    (method_call
+        (field
+            (identifier))
+        (argument_list
+            (variable)
+            (dot)
+            (selector_expression
+                (field (identifier))
+                (field_identifier))
+            (int_literal))))
+
+====================================
+Method on a field without arguments
+====================================
+{{ .Field.Method }}
+---
+(template
+    (selector_expression
+        (field
+            (identifier))
+        (field_identifier)))
+
+====================================
+Method on a field with arguments
+====================================
+{{ .Field.Method $ . .Field.Field2 1 }}
+---
+(template
+    (method_call
+        (selector_expression
+            (field
+                (identifier))
+            (field_identifier))
+        (argument_list
+            (variable)
+            (dot)
+            (selector_expression
+                (field
+                    (identifier))
+                (field_identifier))
+            (int_literal))))

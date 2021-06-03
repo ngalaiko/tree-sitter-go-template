@@ -558,6 +558,40 @@
         {
           "type": "SYMBOL",
           "name": "function_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "method_call"
+        }
+      ]
+    },
+    "method_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "method",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "field"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "selector_expression"
+              }
+            ]
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "arguments",
+          "content": {
+            "type": "SYMBOL",
+            "name": "argument_list"
+          }
         }
       ]
     },
@@ -639,33 +673,37 @@
       }
     },
     "_expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_literal"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "nil"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "dot"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "field"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "selector_expression"
-        }
-      ]
+      "type": "PREC",
+      "value": 7,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_literal"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "nil"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "dot"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "field"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "variable"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "selector_expression"
+          }
+        ]
+      }
     },
     "selector_expression": {
       "type": "PREC",
