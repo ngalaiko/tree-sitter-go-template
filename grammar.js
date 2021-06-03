@@ -202,7 +202,14 @@ module.exports = grammar({
         $._expression,
         $.function_call,
         $.method_call,
+        $.chained_pipeline,
     ),
+
+    chained_pipeline: $ => prec.left(seq(
+        $._pipeline,
+        '|',
+        $._pipeline,
+    )),
 
     method_call: $ => seq(
         field('method', choice(

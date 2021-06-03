@@ -558,8 +558,33 @@
         {
           "type": "SYMBOL",
           "name": "method_call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chained_pipeline"
         }
       ]
+    },
+    "chained_pipeline": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          },
+          {
+            "type": "STRING",
+            "value": "|"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          }
+        ]
+      }
     },
     "method_call": {
       "type": "SEQ",

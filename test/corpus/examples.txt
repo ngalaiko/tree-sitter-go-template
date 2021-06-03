@@ -1,0 +1,92 @@
+====================================
+A string constant.
+====================================
+{{"\"output\""}}
+---
+(template
+    (interpreted_string_literal
+        (escape_sequence)
+        (escape_sequence)))
+
+====================================
+A raw string constant.
+====================================
+{{`"output"`}}
+---
+(template (raw_string_literal))
+
+====================================
+A function call.
+====================================
+{{printf "%q" "output"}}
+---
+(template
+    (function_call
+        (identifier)
+        (argument_list
+            (interpreted_string_literal)
+            (interpreted_string_literal))))
+
+====================================
+A function call whose final argument comes from the previous command.
+====================================
+{{"output" | printf "%q"}}
+---
+(template
+    (chained_pipeline
+        (interpreted_string_literal)
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)))))
+
+====================================
+A more elaborate call.
+====================================
+{{"put" | printf "%s%s" "out" | printf "%q"}}
+---
+(template
+    (chained_pipeline
+        (chained_pipeline
+            (interpreted_string_literal)
+            (function_call
+                (identifier)
+                (argument_list
+                    (interpreted_string_literal)
+                    (interpreted_string_literal))))
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)))))
+
+====================================
+A longer chain.
+====================================
+{{"output" | printf "%s" | printf "%q"}}
+---
+(template
+    (chained_pipeline
+        (chained_pipeline
+            (interpreted_string_literal)
+            (function_call
+                (identifier)
+                (argument_list
+                    (interpreted_string_literal))))
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)))))
+
+====================================
+A with action using dot.
+====================================
+{{with "output"}}{{printf "%q" .}}{{end}}
+---
+(template
+    (with_action
+        (interpreted_string_literal)
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)
+                (dot)))))
