@@ -1,5 +1,5 @@
 {
-  "name": "tree-sitter-go_template",
+  "name": "tree-sitter-go-template",
   "version": "0.19.1",
   "description": "Golang template grammar for tree-sitter",
   "main": "bindings/node",
@@ -17,7 +17,7 @@
     "tree-sitter-cli": "^0.19.1"
   },
   "scripts": {
-    "test": "tree-sitter test",
-    "generate": "tree-sitter generate"
+    "build": "tree-sitter generate && node-gyp build",
+    "test": "tree-sitter test"
   }
 }
