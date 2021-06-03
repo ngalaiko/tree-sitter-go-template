@@ -55,9 +55,13 @@ module.exports = grammar({
         $._action,
     ),
 
-    text: $ => /[^{}]+/,
+    text: $ => choice(
+        token(/[^{}]+/),
+        token(/\{\}/),
+        token(/\{[^{].*?[^}]\}/),
+    ),
 
-    _action: $ => choice(
+    _action: $ => prec(2, choice(
         $._comment_action,
         $._pipeline_action,
         $.if_action,
@@ -66,7 +70,7 @@ module.exports = grammar({
         $.define_action,
         $.block_action,
         $.with_action,
-    ),
+    )),
 
     _comment_action: $ => seq(
         $._left_delimiter,
@@ -367,8 +371,14 @@ module.exports = grammar({
       )
     )),
 
-    _left_delimiter: $ => seq('{{', optional('- ')),
-    _right_delimiter: $ => seq(optional(' -'), '}}')
+    _left_delimiter: $ => choice(
+        token('{{'),
+        token('{{-'),
+    ),
+    _right_delimiter: $ => choice(
+        token('}}'),
+        token('-}}'),
+    ),
   }
 });
 
