@@ -675,7 +675,7 @@
     },
     "chained_pipeline": {
       "type": "PREC_LEFT",
-      "value": 7,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -743,7 +743,7 @@
     },
     "function_call": {
       "type": "PREC_RIGHT",
-      "value": 7,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -824,7 +824,7 @@
     },
     "_expression": {
       "type": "PREC",
-      "value": 7,
+      "value": 1,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -857,7 +857,7 @@
     },
     "selector_expression": {
       "type": "PREC",
-      "value": 7,
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [

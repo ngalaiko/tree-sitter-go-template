@@ -1,28 +1,13 @@
 const
   PREC = {
-    primary: 7,
-    unary: 6,
-    multiplicative: 5,
-    additive: 4,
-    comparative: 3,
-    and: 2,
-    or: 1,
-    composite_literal: -1,
+    primary: 1,
   },
-
-  multiplicative_operators = ['*', '/', '%', '<<', '>>', '&', '&^'],
-  additive_operators = ['+', '-', '|', '^'],
-  comparative_operators = ['==', '!=', '<', '<=', '>', '>='],
-  assignment_operators = multiplicative_operators.concat(additive_operators).map(operator => operator + '=').concat('='),
 
   unicodeLetter = /\p{L}/,
   unicodeDigit = /[0-9]/,
   unicodeChar = /./,
   unicodeValue = unicodeChar,
   letter = choice(unicodeLetter, '_'),
-
-  newline = '\n',
-  terminator = choice(newline, ';'),
 
   hexDigit = /[0-9a-fA-F]/,
   octalDigit = /[0-7]/,
