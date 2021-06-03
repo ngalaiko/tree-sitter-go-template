@@ -199,7 +199,6 @@ module.exports = grammar({
     ),
 
     _pipeline: $ => choice(
-        $.pipeline_stub, // todo: remove
         $._expression,
         $.function_call,
         $.method_call,

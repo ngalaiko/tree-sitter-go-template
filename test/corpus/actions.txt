@@ -19,7 +19,7 @@ pipeline
 ---
 
 (template
-    (pipeline_stub))
+    (function_call (identifier)))
 
 =============================================
 if
@@ -28,7 +28,7 @@ if
 ---
 (template
     (if_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)))
 
 =============================================
@@ -38,7 +38,7 @@ if else
 ---
 (template
     (if_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)
         (text)))
 
@@ -49,9 +49,9 @@ if-else
 ---
 (template
     (if_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)
-        (pipeline_stub)
+        (function_call (identifier))
         (text)))
 
 =============================================
@@ -61,9 +61,9 @@ if-else else
 ---
 (template
     (if_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)
-        (pipeline_stub)
+        (function_call (identifier))
         (text)
         (text)))
 
@@ -74,7 +74,7 @@ range
 ---
 (template
     (range_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)))
 
 =============================================
@@ -84,7 +84,7 @@ range else
 ---
 (template
     (range_action
-        (pipeline_stub)
+        (function_call (identifier))
         (text)
         (text)))
 
@@ -105,7 +105,7 @@ template with argument
 (template
     (template_action
         (interpreted_string_literal)
-        (pipeline_stub)))
+        (function_call (identifier))))
 
 =============================================
 define
@@ -135,7 +135,7 @@ block with argument
 (template
     (block_action
     (interpreted_string_literal)
-    (pipeline_stub)
+    (function_call (identifier))
     (text)))
 
 =============================================
@@ -145,7 +145,7 @@ with
 ---
 (template
     (with_action
-    (pipeline_stub)
+    (function_call (identifier))
     (text)))
 
 =============================================
@@ -155,6 +155,6 @@ with else
 ---
 (template
     (with_action
-    (pipeline_stub)
+    (function_call (identifier))
     (text)
     (text)))

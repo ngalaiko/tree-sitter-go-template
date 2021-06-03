@@ -111,10 +111,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "raw_string_literal",
             "named": true
           },
@@ -202,10 +198,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -340,10 +332,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -528,10 +516,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "range_action",
             "named": true
           },
@@ -622,10 +606,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "raw_string_literal",
             "named": true
           },
@@ -713,10 +693,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -831,10 +807,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -1003,10 +975,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "range_action",
             "named": true
           },
@@ -1121,10 +1089,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "range_action",
             "named": true
           },
@@ -1212,10 +1176,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -1381,10 +1341,6 @@
           "named": true
         },
         {
-          "type": "pipeline_stub",
-          "named": true
-        },
-        {
           "type": "range_action",
           "named": true
         },
@@ -1469,10 +1425,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -1602,10 +1554,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "range_action",
             "named": true
           },
@@ -1696,10 +1644,6 @@
             "named": true
           },
           {
-            "type": "pipeline_stub",
-            "named": true
-          },
-          {
             "type": "raw_string_literal",
             "named": true
           },
@@ -1787,10 +1731,6 @@
           },
           {
             "type": "nil",
-            "named": true
-          },
-          {
-            "type": "pipeline_stub",
             "named": true
           },
           {
@@ -1923,10 +1863,6 @@
   },
   {
     "type": "nil",
-    "named": true
-  },
-  {
-    "type": "pipeline_stub",
     "named": true
   },
   {

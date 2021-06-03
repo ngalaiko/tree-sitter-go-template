@@ -549,10 +549,6 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "pipeline_stub"
-        },
-        {
-          "type": "SYMBOL",
           "name": "_expression"
         },
         {
