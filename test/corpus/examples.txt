@@ -107,3 +107,69 @@ A with action using dot.
             (argument_list
                 (interpreted_string_literal)
                 (dot)))))
+
+====================================
+A with action using dot.
+====================================
+{{with "output"}}{{printf "%q" .}}{{end}}
+---
+(template
+    (with_action
+        (interpreted_string_literal)
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)
+                (dot)))))
+
+====================================
+A with action that creates and uses a variable.
+====================================
+{{with $x := "output" | printf "%q"}}{{$x}}{{end}}
+---
+(template
+    (with_action
+        (variable_definition
+            (variable (identifier))
+            (chained_pipeline
+                (interpreted_string_literal)
+                (function_call
+                    (identifier)
+                    (argument_list
+                        (interpreted_string_literal)))))
+        (variable (identifier))))
+
+====================================
+A with action that uses the variable in another action.
+====================================
+{{with $x := "output"}}{{printf "%q" $x}}{{end}}
+---
+(template
+    (with_action
+        (variable_definition
+            (variable (identifier))
+            (interpreted_string_literal))
+        (function_call
+            (identifier)
+            (argument_list
+                (interpreted_string_literal)
+                (variable (identifier))))))
+
+====================================
+The same, but pipelined.
+====================================
+{{with $x := "output"}}{{$x | printf "%q"}}{{end}}
+---
+(template
+    (with_action
+        (variable_definition
+            (variable
+                (identifier))
+            (interpreted_string_literal))
+        (chained_pipeline
+            (variable
+                (identifier))
+            (function_call
+                (identifier)
+                (argument_list
+                    (interpreted_string_literal))))))

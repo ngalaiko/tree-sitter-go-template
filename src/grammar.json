@@ -223,6 +223,43 @@
         }
       ]
     },
+    "range_variable_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "index",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "FIELD",
+          "name": "element",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":="
+        },
+        {
+          "type": "FIELD",
+          "name": "range",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          }
+        }
+      ]
+    },
     "range_action": {
       "type": "SEQ",
       "members": [
@@ -235,12 +272,21 @@
           "value": "range"
         },
         {
-          "type": "FIELD",
-          "name": "range",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_pipeline"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "range_variable_definition"
+            },
+            {
+              "type": "FIELD",
+              "name": "range",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_pipeline"
+              }
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -566,6 +612,64 @@
         {
           "type": "SYMBOL",
           "name": "parenthesized_pipeline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assignment"
+        }
+      ]
+    },
+    "variable_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "variable",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":="
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          }
+        }
+      ]
+    },
+    "assignment": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "variable",
+          "content": {
+            "type": "SYMBOL",
+            "name": "variable"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          }
         }
       ]
     },

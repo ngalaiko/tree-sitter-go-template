@@ -123,10 +123,21 @@ module.exports = grammar({
         $._right_delimiter,
     ),
 
+    range_variable_definition: $ => seq(
+        field('index', $.variable),
+        ',',
+        field('element', $.variable),
+        ":=",
+        field('range', $._pipeline),
+    ),
+
     range_action: $ => seq(
         $._left_delimiter,
         'range',
-        field('range', $._pipeline),
+        choice(
+            $.range_variable_definition,
+            field('range', $._pipeline),
+        ),
         $._right_delimiter,
 
         field('body', repeat($._block)),
@@ -204,6 +215,20 @@ module.exports = grammar({
         $.method_call,
         $.chained_pipeline,
         $.parenthesized_pipeline,
+        $.variable_definition,
+        $.assignment,
+    ),
+
+    variable_definition: $ => seq(
+        field('variable', $.variable),
+        ":=",
+        field('value', $._pipeline),
+    ),
+
+    assignment: $ => seq(
+        field('variable', $.variable),
+        "=",
+        field('value', $._pipeline),
     ),
 
     chained_pipeline: $ => prec.left(PREC.primary, seq(
