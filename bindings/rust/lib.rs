@@ -6,7 +6,7 @@
 //! ```
 //! let code = "";
 //! let mut parser = tree_sitter::Parser::new();
-//! parser.set_language(tree_sitter_go_template::language()).expect("Error loading YOUR_LANGUAGE_NAME grammar");
+//! parser.set_language(tree_sitter_go_template::language()).expect("Error loading go-template grammar");
 //! let tree = parser.parse(code, None).unwrap();
 //! ```
 //!

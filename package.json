@@ -19,6 +19,17 @@
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
     "test": "tree-sitter test",
-    "parse": "tree-sitter parse"
-  }
+    "parse": "tree-sitter parse",
+    "highlight": "tree-sitter highlight"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.gotexttmpl",
+      "file-types": [
+        "gotexttmpl",
+        "gohtmltmpl",
+        "gotmpl"
+      ]
+    }
+  ]
 }
