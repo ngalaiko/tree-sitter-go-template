@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-go-template"
 description = "Go template grammar for the tree-sitter"
-version = "0.19.1"
+version = "0.19.5"
 authors = [
     "Nikita Galaiko <nikita@galaiko.rocks>",
 ]

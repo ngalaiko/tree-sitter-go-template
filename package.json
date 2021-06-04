@@ -1,12 +1,12 @@
 {
   "name": "tree-sitter-go-template",
-  "version": "0.19.1",
+  "version": "0.19.5",
   "description": "Golang template grammar for tree-sitter",
   "main": "bindings/node",
   "keywords": [
     "parser",
     "json",
-    "go_template"
+    "go-template"
   ],
   "author": "Nikita Galaiko",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "nan": "^2.14.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.19.1"
+    "tree-sitter-cli": "^0.19.5"
   },
   "scripts": {
     "build": "tree-sitter generate && node-gyp build",
