@@ -26,10 +26,12 @@
     {
       "scope": "source.gotexttmpl",
       "file-types": [
+        "gotmpl",
         "gotexttmpl",
         "gohtmltmpl",
-        "gotmpl"
-      ]
+        "yaml"
+      ],
+      "content-regex": "{{.+}}"
     }
   ]
 }
