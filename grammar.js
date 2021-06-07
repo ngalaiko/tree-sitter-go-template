@@ -116,7 +116,7 @@ module.exports = grammar({
         field('index', $.variable),
         ',',
         field('element', $.variable),
-        ":=",
+        token(":="),
         field('range', $._pipeline),
     ),
 
