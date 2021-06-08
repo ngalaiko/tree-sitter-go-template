@@ -1,0 +1,35 @@
+====================================
+Valid curly brackets combination inside text block
+====================================
+{{ if condition }}
+    }}
+    {}
+    }{
+    }
+    {
+    }}}
+{{ end }}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)
+        (text)
+        (text)
+        (text)
+        (text)
+        (text)
+        (text)))
+
+====================================
+Invalid curly brackets combination inside text block
+====================================
+{{ if condition }}
+    {{
+{{ end }}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)
+        (ERROR)))

@@ -25,25 +25,12 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "[^{}]+"
-          }
+          "type": "PATTERN",
+          "value": "[^{]+"
         },
         {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "\\{\\}"
-          }
-        },
-        {
-          "type": "TOKEN",
-          "content": {
-            "type": "PATTERN",
-            "value": "\\{[^{].*?[^}]\\}"
-          }
+          "type": "PATTERN",
+          "value": "\\{"
         }
       ]
     },

@@ -56,9 +56,9 @@ module.exports = grammar({
     ),
 
     text: $ => choice(
-        token(/[^{}]+/),
-        token(/\{\}/),
-        token(/\{[^{].*?[^}]\}/),
+        // forbid '{{', the rest is valid
+        /[^{]+/,
+        /\{/,
     ),
 
     _action: $ => prec(2, choice(
