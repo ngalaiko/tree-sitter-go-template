@@ -14,7 +14,7 @@
   local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
   parser_config.gotmpl = {
     install_info = {
-      url = "/Users/nikita.galaiko/code/tree-sitter-go-template",
+      url = "https://github.com/ngalaiko/tree-sitter-go-template",
       files = {"src/parser.c"}
     },
     filetype = "gotmpl",
@@ -22,6 +22,7 @@
   }
   ```
   Note that `yaml` is listed under `used_by`. I've set this to highlight [helm][] templates as Go Templates instead of yaml. This is a temporary thing before [language injection][] is setup.
+* Run `:TSInstall gotmpl`
 * Setup filetype detection in `~/.config/nvim/ftdetect/gotmpl.vim`:
   ```vimscript
   autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
