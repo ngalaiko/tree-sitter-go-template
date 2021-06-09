@@ -22,7 +22,7 @@
   }
   ```
   Note that `yaml` is listed under `used_by`. I've set this to highlight [helm][] templates as Go Templates instead of yaml. This is a temporary thing before [language injection][] is setup.
-* Run `:TSInstall gotmpl`
+* Run `:TSInstallFromGrammar gotmpl` to download and compile the grammar into your tree-sitter installation
 * Setup filetype detection in `~/.config/nvim/ftdetect/gotmpl.vim`:
   ```vimscript
   autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
