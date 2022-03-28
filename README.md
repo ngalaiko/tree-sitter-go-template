@@ -21,11 +21,17 @@
     used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"}
   }
   ```
-  Note that `yaml` is listed under `used_by`. I've set this to highlight [helm][] templates as Go Templates instead of yaml. This is a temporary thing before [language injection][] is setup.
+  Note that `yaml` is listed under `used_by`. I've set this to highlight [helm][] templates as Go Templates instead of yaml.
+  To ensure that yaml highlighting is still working, you should set up [language injection][] for gotmpl filetypes.
+
 * Run `:TSInstallFromGrammar gotmpl` to download and compile the grammar into your tree-sitter installation
 * Setup filetype detection in `~/.config/nvim/ftdetect/gotmpl.vim`:
   ```vimscript
   autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
+  ```
+* Define language injection for yaml in ~/.config/nvim/queries/gotmpl/injections.scm:
+  ```scheme
+  (text) @yaml
   ```
 * Define highlights in `~/.config/nvim/queries/gotmpl/highlights.scm`, for example:
   ```scheme
