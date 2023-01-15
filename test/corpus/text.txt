@@ -19,6 +19,7 @@ Valid curly brackets combination inside text block
         (text)
         (text)
         (text)
+        (text)
         (text)))
 
 ====================================
@@ -31,5 +32,25 @@ Invalid curly brackets combination inside text block
 (template
     (if_action
         (function_call (identifier))
-        (text)
         (ERROR)))
+====================================
+Valid single curly bracket inside single line text
+====================================
+test: "helloWorld{"
+---
+(template
+    (text))
+====================================
+Multiple curly brackets inside single line text
+====================================
+test: "{he{l} }loWorld{"
+---
+(template
+    (text))
+====================================
+Valid text surrounded by single curly brackets
+====================================
+hello: "{world}"
+---
+(template
+    (text))

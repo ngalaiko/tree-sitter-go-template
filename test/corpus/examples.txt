@@ -173,3 +173,19 @@ The same, but pipelined.
                 (identifier)
                 (argument_list
                     (interpreted_string_literal))))))
+================================================================================
+Multi-line text line-break
+================================================================================
+image: "{{ .Values.image }}"
+test: "value"
+---
+(template
+  (text)
+  (selector_expression
+    (field
+      (identifier))
+    (field_identifier))
+  (text)
+  (text)
+  (text))
+

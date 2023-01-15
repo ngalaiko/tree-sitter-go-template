@@ -77,12 +77,20 @@ module.exports = grammar({
 
         _block: ($) => choice($.text, $._action),
 
-        text: ($) =>
+        text: $ =>
             choice(
-                // forbid '{{', the rest is valid
-                /[^{]+/,
-                /\{/
-            ),
+                token(
+                    repeat1(
+                        choice(
+                            /[^{\n]/,
+                            /\{[^{\n]/,
+                        ),
+                    ),
+                ),
+                /\n/,
+                /./,
+            )
+        ,
 
         _action: ($) =>
             prec(
