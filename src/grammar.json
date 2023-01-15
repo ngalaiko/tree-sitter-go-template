@@ -33,19 +33,15 @@
               "members": [
                 {
                   "type": "PATTERN",
-                  "value": "[^{\\n]"
+                  "value": "[^{ \\t\\n]"
                 },
                 {
                   "type": "PATTERN",
-                  "value": "\\{[^{\\n]"
+                  "value": "\\{[^{ \\t\\n]"
                 }
               ]
             }
           }
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\n"
         },
         {
           "type": "PATTERN",

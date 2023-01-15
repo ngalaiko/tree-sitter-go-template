@@ -19,7 +19,6 @@ Valid curly brackets combination inside text block
         (text)
         (text)
         (text)
-        (text)
         (text)))
 
 ====================================
@@ -39,13 +38,15 @@ Valid single curly bracket inside single line text
 test: "helloWorld{"
 ---
 (template
+    (text)
     (text))
 ====================================
 Multiple curly brackets inside single line text
 ====================================
-test: "{he{l} }loWorld{"
+test: "{he{l}}loWorld{"
 ---
 (template
+    (text)
     (text))
 ====================================
 Valid text surrounded by single curly brackets
@@ -53,4 +54,44 @@ Valid text surrounded by single curly brackets
 hello: "{world}"
 ---
 (template
+    (text)
     (text))
+====================================
+Key value text with variable
+====================================
+hello: "{{ .world }} test"
+---
+(template
+    (text)
+    (text)
+    (field
+      (identifier))
+    (text))
+================================================================================
+Multi-line text line-break
+================================================================================
+image: "{{ .Values.image }}"
+test: "value"
+---
+(template
+  (text)
+  (text)
+  (selector_expression
+    (field
+      (identifier))
+    (field_identifier))
+  (text)
+  (text)
+  (text))
+
+================================================================================
+Plain Key-Value Pairs
+================================================================================
+apiVersion: apps/v1
+kind: Deployment
+---
+(template
+  (text)
+  (text)
+  (text)
+  (text))

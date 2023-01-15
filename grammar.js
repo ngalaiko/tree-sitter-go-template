@@ -82,15 +82,13 @@ module.exports = grammar({
                 token(
                     repeat1(
                         choice(
-                            /[^{\n]/,
-                            /\{[^{\n]/,
+                            /[^{ \t\n]/,
+                            /\{[^{ \t\n]/,
                         ),
                     ),
                 ),
-                /\n/,
                 /./,
-            )
-        ,
+            ),
 
         _action: ($) =>
             prec(
