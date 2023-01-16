@@ -26,6 +26,10 @@
       "members": [
         {
           "type": "PATTERN",
+          "value": "\\[[^\\n]+\\]"
+        },
+        {
+          "type": "PATTERN",
           "value": "\"[^{\\n]+\""
         },
         {

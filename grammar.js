@@ -79,6 +79,9 @@ module.exports = grammar({
 
         text: $ =>
             choice(
+                // identify text enclosed in square brackets as coherent text
+                /\[[^\n]+\]/,
+                // identify text enclosed in quotes as coherent text
                 /"[^{\n]+"/,
                 /'[^{\n]+'/,
                 token(
