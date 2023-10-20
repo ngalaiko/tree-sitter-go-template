@@ -13,12 +13,6 @@ Valid curly brackets combination inside text block
 (template
     (if_action
         (function_call (identifier))
-        (text)
-        (text)
-        (text)
-        (text)
-        (text)
-        (text)
         (text)))
 
 ====================================
