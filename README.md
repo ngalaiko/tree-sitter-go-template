@@ -2,7 +2,7 @@
 
 I've stopped using helm (which I mostly written this package for) on a daily basis, so I don't really keep up with the development of tree sitter, and nvim-tree-sitter. So this project won't receive any attention from me in the near future.
 
-If you are interested in mainaining the project, feel free to fork the repo, and if the fork is maintained I will gladly delegate you this repository or link it.
+If you are interested in maintaining the project, feel free to fork the repo, and if the fork is maintained I will gladly delegate you this repository or link it.
 
 # tree-sitter-go-template
 
@@ -37,7 +37,9 @@ If you are interested in mainaining the project, feel free to fork the repo, and
   ```
 * Define language injection for yaml in ~/.config/nvim/queries/gotmpl/injections.scm:
   ```scheme
-  (text) @yaml
+  ((text) @injection.content
+   (#set! injection.language "yaml")
+   (#set! injection.combined))
   ```
 * Define highlights in `~/.config/nvim/queries/gotmpl/highlights.scm`, for example:
   ```scheme
