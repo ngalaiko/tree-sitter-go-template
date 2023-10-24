@@ -22,17 +22,36 @@
       ]
     },
     "text": {
-      "type": "CHOICE",
-      "members": [
-        {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_text_no_break"
+          },
+          {
+            "type": "PATTERN",
+            "value": ":"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\{"
+          }
+        ]
+      }
+    },
+    "_text_no_break": {
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
           "type": "PATTERN",
-          "value": "[^{]+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\{"
+          "value": "[^:{]"
         }
-      ]
+      }
     },
     "_action": {
       "type": "PREC",
