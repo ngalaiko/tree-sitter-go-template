@@ -55,13 +55,9 @@ module.exports = grammar({
             $._action,
         ),
 
-        text: $ => $._text,
-
-        _text: $ => prec(1, choice($._char, seq($._text, $._char))),
-
-        _char: $ => choice(
+        text: $ => choice(
             // forbid '{{', the rest is valid
-            /[^{]/,
+            /[^{]+/,
             /\{/,
         ),
 

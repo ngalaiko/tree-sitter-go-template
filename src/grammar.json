@@ -22,41 +22,11 @@
       ]
     },
     "text": {
-      "type": "SYMBOL",
-      "name": "_text"
-    },
-    "_text": {
-      "type": "PREC",
-      "value": 1,
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "_char"
-          },
-          {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "_text"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "_char"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "_char": {
       "type": "CHOICE",
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^{]"
+          "value": "[^{]+"
         },
         {
           "type": "PATTERN",
