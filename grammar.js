@@ -1,6 +1,9 @@
 const PREC = {
-        primary: 1,
-    },
+    primary: 1,
+    else_if: 1,
+    else: 2,
+},
+
     unicodeLetter = /\p{L}/,
     unicodeDigit = /[0-9]/,
     unicodeChar = /./,
@@ -63,6 +66,12 @@ const PREC = {
 
 module.exports = grammar({
     name: 'gotmpl',
+    conflicts: $ => [
+        // conflict between a teplate in a else if clause and the beginning of the 
+        // else clause in not solveable with LR(1)
+        [$._else_clause],
+        [$._else_if_clause],
+    ],
     rules: {
         template: ($) => repeat($._block),
 
@@ -96,40 +105,40 @@ module.exports = grammar({
         _pipeline_action: ($) =>
             seq($._left_delimiter, $._pipeline, $._right_delimiter),
 
-        if_action: ($) =>
-            seq(
-                $._left_delimiter,
-                'if',
-                field('condition', $._pipeline),
-                $._right_delimiter,
+        if_action: $ => seq(
+            $._left_delimiter,
+            'if',
+            field('condition', $._pipeline),
+            $._right_delimiter,
 
-                field('consequence', repeat($._block)),
+            field('consequence', repeat($._block)),
 
-                repeat(
-                    prec.left(
-                        seq(
-                            $._left_delimiter,
-                            'else if',
-                            field('condition', $._pipeline),
-                            $._right_delimiter,
-                            field('option', repeat($._block))
-                        )
-                    )
-                ),
+            repeat($._else_if_clause),
 
-                optional(
-                    seq(
-                        $._left_delimiter,
-                        'else',
-                        $._right_delimiter,
-                        field('alternative', repeat($._block))
-                    )
-                ),
+            optional($._else_clause),
+            prec.right(0, $._if_actions_end)
+        ),
 
-                $._left_delimiter,
-                'end',
-                $._right_delimiter
-            ),
+        _else_if_clause: $ => prec.dynamic(PREC.else_if, seq(
+            $._left_delimiter,
+            'else if',
+            field('condition', $._pipeline),
+            $._right_delimiter,
+            field('option', repeat($._block)),
+        )),
+
+        _else_clause: $ => prec.dynamic(PREC.else, seq(
+            $._left_delimiter,
+            'else',
+            $._right_delimiter,
+            (field('alternative', repeat($._block))),
+        )),
+
+        _if_actions_end: $ => seq(
+            $._left_delimiter,
+            'end',
+            $._right_delimiter
+        ),
 
         range_variable_definition: ($) =>
             seq(
