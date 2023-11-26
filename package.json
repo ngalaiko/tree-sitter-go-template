@@ -11,7 +11,7 @@
   "author": "Nikita Galaiko",
   "license": "MIT",
   "dependencies": {
-    "nan": "^2.14.0"
+    "nan": "^2.18.0"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.8"
