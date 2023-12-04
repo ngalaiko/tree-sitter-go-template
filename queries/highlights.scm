@@ -24,7 +24,7 @@
 ; Builtin functions
 
 ((identifier) @function.builtin
- (#match? @function.builtin "^(and|call|html|index|slice|js|len|not|or|print|printf|println|urlquery|eq|ne|lt|ge|gt|ge)$"))
+ (#match? @function.builtin "^(and|call|html|index|slice|js|len|not|or|print|printf|println|urlquery|eq|ne|lt|ge|gt|ge|indent|nindent|toYaml|toJson|trim|b64enc|b64dec|default)$"))
 
 ; Delimiters
 

@@ -77,11 +77,22 @@ module.exports = grammar({
 
         _block: ($) => choice($.text, $._action),
 
-        text: ($) =>
+        text: $ =>
             choice(
-                // forbid '{{', the rest is valid
-                /[^{]+/,
-                /\{/
+                // identify text enclosed in square brackets as coherent text
+                /\[[^\n]+\]/,
+                // identify text enclosed in quotes as coherent text
+                /"[^{\n]+"/,
+                /'[^{\n]+'/,
+                token(
+                    repeat1(
+                        choice(
+                            /[^{ \t\n]/,
+                            /\{[^{ \t\n]/,
+                        ),
+                    ),
+                ),
+                /./,
             ),
 
         _action: ($) =>

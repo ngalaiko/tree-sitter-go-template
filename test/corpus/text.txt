@@ -31,5 +31,94 @@ Invalid curly brackets combination inside text block
 (template
     (if_action
         (function_call (identifier))
-        (text)
         (ERROR)))
+====================================
+Valid single curly bracket inside single line text
+====================================
+test: "helloWorld{"
+---
+(template
+    (text)
+    (text))
+====================================
+Multiple curly brackets inside single line text
+====================================
+test: "{he{l}}loWorld{"
+---
+(template
+    (text)
+    (text))
+====================================
+Valid text surrounded by single curly brackets
+====================================
+hello: "{world}"
+---
+(template
+    (text)
+    (text))
+====================================
+Key value text with variable
+====================================
+hello: "{{ .world }} test"
+---
+(template
+    (text)
+    (text)
+    (field
+      (identifier))
+    (text))
+================================================================================
+Multi-line text line-break
+================================================================================
+image: "{{ .Values.image }}"
+test: "value"
+---
+(template
+  (text)
+  (text)
+  (selector_expression
+    (field
+      (identifier))
+    (field_identifier))
+  (text)
+  (text)
+  (text))
+
+================================================================================
+Plain Key-Value Pairs
+================================================================================
+apiVersion: apps/v1
+kind: Deployment
+---
+(template
+  (text)
+  (text)
+  (text)
+  (text))
+================================================================================
+Key-Value Pair with whitespace in quote
+================================================================================
+foo: "bar "
+---
+(template
+  (text)
+  (text))
+================================================================================
+Key-Value Pairs with quotes
+================================================================================
+hello: "world"
+foo: "bar"
+---
+(template
+  (text)
+  (text)
+  (text)
+  (text))
+================================================================================
+Multi-Element Array
+================================================================================
+arr: [ "this{", "is" ]
+---
+(template
+  (text)
+  (text))

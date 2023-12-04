@@ -9,7 +9,6 @@ comment */ }}
 
 (template
     (comment)
-    (text)
     (comment))
 
 ============================================
@@ -52,7 +51,6 @@ if else with text and template in if
         (function_call (identifier))
         (text)
         (function_call (identifier))
-        (text)
         (text)))
 
 =============================================
@@ -77,7 +75,6 @@ if-else with text and template in if
         (function_call (identifier))
         (text)
         (function_call (identifier))
-        (text)
         (function_call (identifier))
         (text)))
 
@@ -105,7 +102,6 @@ if-else else with template and text in else
         (text)
         (function_call (identifier))
         (text)
-        (text)
         (selector_expression
           (field
             (identifier))
@@ -127,8 +123,7 @@ if-else else with text and template in else
         (selector_expression
           (field
             (identifier))
-          (field_identifier))
-          (text)))
+          (field_identifier))))
 
 =============================================
 if-else else with text and template in if-else
@@ -145,7 +140,6 @@ if-else else with text and template in if-else
           (field
             (identifier))
           (field_identifier))
-        (text)
         (text)))
 
 =============================================
@@ -164,12 +158,10 @@ if-else else with text and template in else and text and template in if-else
             (identifier))
           (field_identifier))
         (text)
-        (text)
         (selector_expression
           (field
             (identifier))
-          (field_identifier))
-          (text)))
+          (field_identifier))))
 
 =============================================
 if-else with text and template in if-else
@@ -185,8 +177,7 @@ if-else with text and template in if-else
         (selector_expression
           (field
             (identifier))
-          (field_identifier))
-          (text)))
+          (field_identifier))))
 
 =============================================
 range
