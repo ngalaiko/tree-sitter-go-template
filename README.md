@@ -5,9 +5,6 @@
 [Golang templates][] grammar for [tree-sitter][].
 This includes languages that use Go templates like [helm][].
 
-[tree-sitter]: https://github.com/tree-sitter/tree-sitter
-[Golang templates]: https://golang.org/pkg/text/template/
-
 ## Announcement
 
 I've stopped using helm (which I mostly written this package for) on a daily
@@ -17,6 +14,10 @@ near future.
 
 If you are interested in mainaining the project, feel free to fork the repo, and
 if the fork is maintained I will gladly delegate you this repository or link it.
+
+## Dependencies
+
+- [nvim-treesitter][]
 
 ## Installation
 
@@ -32,10 +33,29 @@ Lazy:
 }
 ```
 
-Then either open a `.gotmpl` file or run `:TSInstall gotmpl` once. Afterwards
-you should be able to open helm files and the helm highlighting should work
-after installing. If you get an error message after the parser has been
-installed, just reload the file and it should work.
+The parsers will be installed once you restart neovim.
 
-[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+## Configuration
+
+If you only want to install a subset of the additional languages or none at all,
+you can pass these via the `additional_langs` option. By default all additional
+languages are installed.
+
+```lua
+{
+  "ngalaiko/tree-sitter-go-template",
+  dependencies = "nvim-treesitter/nvim-treesitter",
+  opts = {
+    additional_langs = { "helm" },
+  },
+}
+```
+
+## Available additional languages
+
+- [helm][]
+
+[Golang templates]: https://golang.org/pkg/text/template/
 [helm]: https://helm.sh
+[nvim-treesitter]: https://github.com/nvim-treesitter/nvim-treesitter
+[tree-sitter]: https://github.com/tree-sitter/tree-sitter
