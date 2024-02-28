@@ -17,7 +17,8 @@
     "tree-sitter-cli": "^0.20.8"
   },
   "scripts": {
-    "build": "tree-sitter generate && node-gyp build",
+    "build": "tree-sitter generate && node-gyp build && npm run build-helm",
+    "build-helm": "cd dialects/helm && tree-sitter generate --no-bindings",
     "test": "tree-sitter test",
     "parse": "tree-sitter parse",
     "highlight": "tree-sitter highlight"
@@ -32,6 +33,13 @@
         "yaml"
       ],
       "content-regex": "{{.+}}"
+    },
+    {
+      "scope": "source.helm",
+      "path": "dialects/helm",
+      "file-types": [
+        "helm"
+      ]
     }
   ]
 }
