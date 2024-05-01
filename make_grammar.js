@@ -306,8 +306,9 @@ module.exports = function make_grammar(dialect) {
                 prec(
                     PREC.primary,
                     seq(
-                        field('operand', $._pipeline),
-                        '.',
+                        field('operand',
+                            choice($.parenthesized_pipeline, $.field, $.variable, $.selector_expression)),
+                        token.immediate('.'),
                         field('field', $._field_identifier)
                     )
                 ),

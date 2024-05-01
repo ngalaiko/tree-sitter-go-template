@@ -102,3 +102,15 @@ Method on a field with arguments
                     (identifier))
                 (field_identifier))
             (int_literal))))
+
+====================================
+Selector expression on a parenthesized pipeline
+====================================
+{{ (pipeline).Field }}
+---
+(template
+  (selector_expression
+    (parenthesized_pipeline
+      (function_call
+        (identifier)))
+    (field_identifier)))

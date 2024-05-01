@@ -96,3 +96,16 @@ Named variable with chained field
                 (identifier))
             (field_identifier))
         (field_identifier)))
+
+====================================
+Two fields seperated by whitespace / method call with field as argument
+====================================
+{{ .Field .Field }}
+---
+(template
+  (method_call
+    (field
+      (identifier))
+    (argument_list
+      (field
+        (identifier)))))
