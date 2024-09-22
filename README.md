@@ -56,11 +56,9 @@ More advanced use cases would require adding more dialects (as done for helm).
 
 > [!NOTE]
 >
-> If you are using helm, you should also install the yaml parser (:TSInstall yaml) to get [language injection][] for yaml
-
-> [!TIP]
+> If you are using helm, you should also install the yaml parser (:TSInstall yaml) to get [language injection][] for yaml.
 >
-> If you are using [AstroNvim][] you can just install the [astrocommunity][] helm pack.
+> In case you are using [AstroNvim][] you can just install the [astrocommunity][] helm pack or when using [LazyVim][] its [LazyVimHelm] plugin.
 
 [tree-sitter]: https://github.com/tree-sitter/tree-sitter
 [Golang templates]: https://golang.org/pkg/text/template/
@@ -72,3 +70,5 @@ More advanced use cases would require adding more dialects (as done for helm).
 [language injection]: https://tree-sitter.github.io/tree-sitter/syntax-highlighting#language-injection
 [AstroNvim]: https://github.com/AstroNvim/AstroNvim
 [astrocommunity]: https://github.com/AstroNvim/astrocommunity
+[LazyVim]: https://www.lazyvim.org/
+[LazyVimHelm]: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/helm.lua
