@@ -39,6 +39,21 @@ More dialects could be added in the future (e.g. for html templates).
 :TSInstall helm
 ```
 
+### Highlighting for the templated language
+
+To get proper highlighting for the language that is templated (e.g. html) you need to add injections for
+that language to `.config/nvim/queries/gotmpl/injections.scm`:
+
+```scm
+((text) @injection.content
+ (#set! injection.language "html")
+ (#set! injection.combined))
+```
+
+Replace html with the tree-sitter name of your required language and make sure to install it with `:TSInstall`.
+
+More advanced use cases would require adding more dialects (as done for helm).
+
 > [!NOTE]
 >
 > If you are using helm, you should also install the yaml parser (:TSInstall yaml) to get [language injection][] for yaml
