@@ -78,6 +78,10 @@ module.exports = function make_grammar(dialect) {
 
             _block: ($) => choice($.yaml_no_injection_text, $.text, $._action),
 
+            // This rule is a workaround to fix https://github.com/ngalaiko/tree-sitter-go-template/issues/23
+            // by creating a new node type that is not used for injections of the yaml language.
+            // The better solution would be to fix the issue in the yaml grammar.
+            // If https://github.com/tree-sitter-grammars/tree-sitter-yaml/issues/12 is resolved, this rule can be removed.
             yaml_no_injection_text: ($) => choice('-'),
 
             text: ($) =>
