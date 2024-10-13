@@ -13,11 +13,24 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "yaml_no_injection_text"
+        },
+        {
+          "type": "SYMBOL",
           "name": "text"
         },
         {
           "type": "SYMBOL",
           "name": "_action"
+        }
+      ]
+    },
+    "yaml_no_injection_text": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "-"
         }
       ]
     },
