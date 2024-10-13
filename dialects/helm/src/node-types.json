@@ -387,6 +387,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -624,6 +628,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -818,6 +826,10 @@
           },
           {
             "type": "with_action",
+            "named": true
+          },
+          {
+            "type": "yaml_no_injection_text",
             "named": true
           },
           {
@@ -1033,6 +1045,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -1160,6 +1176,10 @@
           },
           {
             "type": "with_action",
+            "named": true
+          },
+          {
+            "type": "yaml_no_injection_text",
             "named": true
           },
           {
@@ -1431,6 +1451,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -1558,6 +1582,10 @@
           },
           {
             "type": "with_action",
+            "named": true
+          },
+          {
+            "type": "yaml_no_injection_text",
             "named": true
           },
           {
@@ -1929,6 +1957,10 @@
         {
           "type": "with_action",
           "named": true
+        },
+        {
+          "type": "yaml_no_injection_text",
+          "named": true
         }
       ]
     }
@@ -2275,6 +2307,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -2487,6 +2523,10 @@
             "named": true
           },
           {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
             "type": "{{",
             "named": false
           },
@@ -2501,6 +2541,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "yaml_no_injection_text",
+    "named": true,
+    "fields": {}
   },
   {
     "type": " ",
@@ -2524,6 +2569,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
     "named": false
   },
   {
