@@ -39,13 +39,26 @@ More dialects could be added in the future (e.g. for html templates).
 :TSInstall helm
 ```
 
+### Highlighting for the templated language
+
+To get proper highlighting for the language that is templated (e.g. html) you need to add injections for
+that language to `.config/nvim/queries/gotmpl/injections.scm`:
+
+```scm
+((text) @injection.content
+ (#set! injection.language "html")
+ (#set! injection.combined))
+```
+
+Replace html with the tree-sitter name of your required language and make sure to install it with `:TSInstall`.
+
+More advanced use cases would require adding more dialects (as done for helm).
+
 > [!NOTE]
 >
-> If you are using helm, you should also install the yaml parser (:TSInstall yaml) to get [language injection][] for yaml
-
-> [!TIP]
+> If you are using helm, you should also install the yaml parser (:TSInstall yaml) to get [language injection][] for yaml.
 >
-> If you are using [AstroNvim][] you can just install the [astrocommunity][] helm pack.
+> In case you are using [AstroNvim][] you can just install the [astrocommunity][] helm pack or when using [LazyVim][] its [LazyVimHelm] plugin.
 
 [tree-sitter]: https://github.com/tree-sitter/tree-sitter
 [Golang templates]: https://golang.org/pkg/text/template/
@@ -57,3 +70,5 @@ More dialects could be added in the future (e.g. for html templates).
 [language injection]: https://tree-sitter.github.io/tree-sitter/syntax-highlighting#language-injection
 [AstroNvim]: https://github.com/AstroNvim/AstroNvim
 [astrocommunity]: https://github.com/AstroNvim/astrocommunity
+[LazyVim]: https://www.lazyvim.org/
+[LazyVimHelm]: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/helm.lua
