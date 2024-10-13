@@ -33,3 +33,34 @@ Invalid curly brackets combination inside text block
         (function_call (identifier))
         (text)
         (ERROR)))
+
+====================================
+No injection text
+====================================
+foo:
+  bar: {{ .Values.foo.bar }}-{{ .Values.foo.bar }}
+---
+(template
+  (text)
+  (selector_expression
+    (selector_expression
+      (field
+        (identifier))
+      (field_identifier))
+    (field_identifier))
+  (yaml_no_injection_text)
+  (selector_expression
+    (selector_expression
+      (field
+        (identifier))
+      (field_identifier))
+    (field_identifier)))
+
+====================================
+Normal text
+====================================
+this:
+  - is a yaml-list
+---
+(template
+  (text))

@@ -76,7 +76,9 @@ module.exports = function make_grammar(dialect) {
         rules: {
             template: ($) => repeat($._block),
 
-            _block: ($) => choice($.text, $._action),
+            _block: ($) => choice($.yaml_no_injection_text, $.text, $._action),
+
+            yaml_no_injection_text: ($) => choice('-'),
 
             text: ($) =>
                 choice(
