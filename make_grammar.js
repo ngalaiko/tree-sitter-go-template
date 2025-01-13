@@ -323,9 +323,21 @@ module.exports = function make_grammar(dialect) {
 
             field: ($) => seq('.', field('name', $.identifier)),
 
-            variable: ($) => seq('$', optional(field('name', $.identifier))),
+            variable: ($) =>
+                seq(
+                    '$',
+                    optional(
+                        field(
+                            'name',
+                            alias(
+                                token(repeat1(choice(letter, unicodeDigit))),
+                                $.identifier
+                            )
+                        )
+                    )
+                ),
 
-            identifier: ($) =>
+            identifier: (_) =>
                 token(seq(letter, repeat(choice(letter, unicodeDigit)))),
 
             _literal: ($) =>

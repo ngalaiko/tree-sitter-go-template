@@ -2,11 +2,20 @@
 Variable definition
 ====================================
 {{ $variable := pipeline }}
+{{ $1var := pipeline }}
 ---
 (template
-    (variable_definition
-        (variable (identifier))
-        (function_call (identifier))))
+  (variable_definition
+    (variable
+      (identifier))
+    (function_call
+      (identifier)))
+  (text)
+  (variable_definition
+    (variable
+      (identifier))
+    (function_call
+      (identifier))))
 
 ====================================
 Variable assignment
