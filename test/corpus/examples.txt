@@ -2,11 +2,16 @@
 A string constant.
 ====================================
 {{"\"output\""}}
+{{"output
+"}}
 ---
 (template
-    (interpreted_string_literal
-        (escape_sequence)
-        (escape_sequence)))
+  (interpreted_string_literal
+    (escape_sequence)
+    (escape_sequence))
+  (text)
+  (ERROR
+    (ERROR)))
 
 ====================================
 A raw string constant.
