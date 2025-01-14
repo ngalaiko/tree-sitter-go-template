@@ -21,7 +21,7 @@
     "scripts": {
         "build": "tree-sitter generate && node-gyp build && npm run build-helm",
         "build-helm": "cd dialects/helm && tree-sitter generate --no-bindings",
-        "test": "tree-sitter test",
+        "test": "tree-sitter test && cd test && go test -v",
         "parse": "tree-sitter parse",
         "highlight": "tree-sitter highlight"
     }
