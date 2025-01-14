@@ -1,16 +1,92 @@
 ============================================
 comment
 ============================================
-{{ /* comment */ }}
-{{ /* multi
+{{/* comment */}}
+{{- /* comment */ -}}
+{{/* comment */ -}}
+{{- /* comment */}}
+{{/* multi
 line
-comment */ }}
+comment */}}
+{{- /* multi
+line
+comment */ -}}
 ---
 
 (template
-    (comment)
-    (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment)
+  (text)
+  (comment))
+
+============================================
+invalid comments
+============================================
+
+{{ /* invalid comment */}}
+{{/* invalid comment */ }}
+
+
+{{-/* invalid comment */ -}}
+{{- /* invalid comment */-}}
+
+{{-
+ /* invalid comment */ -}}
+{{- /* invalid comment */
+ -}}
+
+{{- 
+/* invalid comment */ -}}
+{{- /* invalid comment */ 
+-}}
+--------------------------------------------
+
+(template
+  (text)
+  (ERROR
+    (ERROR
+      (UNEXPECTED '/'))
+    (function_call
+      (identifier)
+      (argument_list
+        (function_call
+          (identifier))))
+    (UNEXPECTED '*'))
+  (text)
+  (comment)
+  (ERROR)
+  (text)
+  (ERROR
     (comment))
+  (text)
+  (comment)
+  (ERROR)
+  (text)
+  (ERROR
+    (UNEXPECTED '/')
+    (identifier)
+    (identifier)
+    (UNEXPECTED '*'))
+  (text)
+  (comment)
+  (ERROR)
+  (text)
+  (ERROR
+    (UNEXPECTED '/')
+    (identifier)
+    (identifier)
+    (UNEXPECTED '*'))
+  (text)
+  (comment)
+  (MISSING "-}}")
+  (text))
 
 ============================================
 pipeline
