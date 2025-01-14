@@ -16,6 +16,9 @@ jobs:
             - uses: actions/setup-python@v4
               with:
                   python-version: '3.11'
+            - uses: actions/setup-go@v5
+              with:
+                  go-version: '1.23'
             - uses: actions/setup-node@v3
               with:
                   node-version: '18'
@@ -30,3 +33,4 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - run: npx prettier --check *.js
+            - run: npm test
