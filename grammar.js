@@ -1,3 +1,3 @@
-const make_grammar = require('./make_grammar');
+const make_grammar = require('./make_grammar')
 
-module.exports = make_grammar('gotmpl');
+module.exports = make_grammar('gotmpl')
