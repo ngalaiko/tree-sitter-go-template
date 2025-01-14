@@ -1,45 +1,27 @@
 {
-  "name": "tree-sitter-go-template",
-  "version": "0.19.5",
-  "description": "Golang template grammar for tree-sitter",
-  "main": "bindings/node",
-  "keywords": [
-    "parser",
-    "json",
-    "go-template"
-  ],
-  "author": "Nikita Galaiko",
-  "license": "MIT",
-  "dependencies": {
-    "nan": "^2.18.0"
-  },
-  "devDependencies": {
-    "tree-sitter-cli": "^0.20.8"
-  },
-  "scripts": {
-    "build": "tree-sitter generate && node-gyp build && npm run build-helm",
-    "build-helm": "cd dialects/helm && tree-sitter generate --no-bindings",
-    "test": "tree-sitter test",
-    "parse": "tree-sitter parse",
-    "highlight": "tree-sitter highlight"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.gotexttmpl",
-      "file-types": [
-        "gotmpl",
-        "gotexttmpl",
-        "gohtmltmpl",
-        "yaml"
-      ],
-      "content-regex": "{{.+}}"
-    },
-    {
-      "scope": "source.helm",
-      "path": "dialects/helm",
-      "file-types": [
+    "name": "tree-sitter-go-template",
+    "version": "0.19.5",
+    "description": "Golang template grammar for tree-sitter",
+    "main": "bindings/node",
+    "keywords": [
+        "parser",
+        "json",
+        "go-template",
         "helm"
-      ]
+    ],
+    "author": "Nikita Galaiko",
+    "license": "MIT",
+    "dependencies": {
+        "nan": "^2.22.0"
+    },
+    "devDependencies": {
+        "tree-sitter-cli": "^0.24.7"
+    },
+    "scripts": {
+        "build": "tree-sitter generate && node-gyp build && npm run build-helm",
+        "build-helm": "cd dialects/helm && tree-sitter generate --no-bindings",
+        "test": "tree-sitter test",
+        "parse": "tree-sitter parse",
+        "highlight": "tree-sitter highlight"
     }
-  ]
 }
