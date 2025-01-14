@@ -67,7 +67,8 @@ invalid comments
     (comment))
   (text)
   (comment)
-  (ERROR)
+  (ERROR
+    (yaml_no_injection_text))
   (text)
   (ERROR
     (UNEXPECTED '/')
@@ -76,7 +77,8 @@ invalid comments
     (UNEXPECTED '*'))
   (text)
   (comment)
-  (ERROR)
+  (ERROR
+    (yaml_no_injection_text))
   (text)
   (ERROR
     (UNEXPECTED '/')

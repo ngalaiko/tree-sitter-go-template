@@ -26,13 +26,8 @@
       ]
     },
     "yaml_no_injection_text": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "-"
-        }
-      ]
+      "type": "STRING",
+      "value": "-"
     },
     "text": {
       "type": "CHOICE",

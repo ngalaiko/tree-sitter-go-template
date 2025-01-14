@@ -1,13 +1,10 @@
 const PREC = {
-    primary: 1,
-    else_if: 1,
-    else: 2,
-},
-
+        primary: 1,
+        else_if: 1,
+        else: 2,
+    },
     unicodeLetter = /\p{L}/,
     unicodeDigit = /[0-9]/,
-    unicodeChar = /./,
-    unicodeValue = unicodeChar,
     letter = choice(unicodeLetter, '_'),
     hexDigit = /[0-9a-fA-F]/,
     octalDigit = /[0-7]/,
@@ -67,8 +64,8 @@ const PREC = {
 module.exports = function make_grammar(dialect) {
     return grammar({
         name: dialect,
-        conflicts: $ => [
-            // conflict between a template in an else if clause and the beginning of the 
+        conflicts: ($) => [
+            // conflict between a template in an else if clause and the beginning of the
             // else clause in not solveable with LR(1)
             [$._else_clause],
             [$._else_if_clause],
@@ -82,9 +79,9 @@ module.exports = function make_grammar(dialect) {
             // by creating a new node type that is not used for injections of the yaml language.
             // The better solution would be to fix the issue in the yaml grammar.
             // If https://github.com/tree-sitter-grammars/tree-sitter-yaml/issues/12 is resolved, this rule can be removed.
-            yaml_no_injection_text: ($) => choice('-'),
+            yaml_no_injection_text: (_) => '-',
 
-            text: ($) =>
+            text: (_) =>
                 choice(
                     // forbid '{{', the rest is valid
                     /[^{]+/,
@@ -122,40 +119,46 @@ module.exports = function make_grammar(dialect) {
             _pipeline_action: ($) =>
                 seq($._left_delimiter, $._pipeline, $._right_delimiter),
 
-            if_action: $ => seq(
-                $._left_delimiter,
-                'if',
-                field('condition', $._pipeline),
-                $._right_delimiter,
+            if_action: ($) =>
+                seq(
+                    $._left_delimiter,
+                    'if',
+                    field('condition', $._pipeline),
+                    $._right_delimiter,
 
-                field('consequence', repeat($._block)),
+                    field('consequence', repeat($._block)),
 
-                repeat($._else_if_clause),
+                    repeat($._else_if_clause),
 
-                optional($._else_clause),
-                prec.right(0, $._if_actions_end)
-            ),
+                    optional($._else_clause),
+                    prec.right(0, $._if_actions_end)
+                ),
 
-            _else_if_clause: $ => prec.dynamic(PREC.else_if, seq(
-                $._left_delimiter,
-                'else if',
-                field('condition', $._pipeline),
-                $._right_delimiter,
-                field('option', repeat($._block)),
-            )),
+            _else_if_clause: ($) =>
+                prec.dynamic(
+                    PREC.else_if,
+                    seq(
+                        $._left_delimiter,
+                        'else if',
+                        field('condition', $._pipeline),
+                        $._right_delimiter,
+                        field('option', repeat($._block))
+                    )
+                ),
 
-            _else_clause: $ => prec.dynamic(PREC.else, seq(
-                $._left_delimiter,
-                'else',
-                $._right_delimiter,
-                (field('alternative', repeat($._block))),
-            )),
+            _else_clause: ($) =>
+                prec.dynamic(
+                    PREC.else,
+                    seq(
+                        $._left_delimiter,
+                        'else',
+                        $._right_delimiter,
+                        field('alternative', repeat($._block))
+                    )
+                ),
 
-            _if_actions_end: $ => seq(
-                $._left_delimiter,
-                'end',
-                $._right_delimiter
-            ),
+            _if_actions_end: ($) =>
+                seq($._left_delimiter, 'end', $._right_delimiter),
 
             range_variable_definition: ($) =>
                 seq(
@@ -300,10 +303,14 @@ module.exports = function make_grammar(dialect) {
 
             argument_list: ($) =>
                 prec.right(
-                    seq($._pipeline, repeat(seq(' ', $._pipeline)), optional(' '))
+                    seq(
+                        $._pipeline,
+                        repeat(seq(' ', $._pipeline)),
+                        optional(' ')
+                    )
                 ),
 
-            pipeline_stub: ($) => token('pipeline'),
+            pipeline_stub: (_) => token('pipeline'),
 
             _expression: ($) =>
                 prec(
@@ -322,8 +329,15 @@ module.exports = function make_grammar(dialect) {
                 prec(
                     PREC.primary,
                     seq(
-                        field('operand',
-                            choice($.parenthesized_pipeline, $.field, $.variable, $.selector_expression)),
+                        field(
+                            'operand',
+                            choice(
+                                $.parenthesized_pipeline,
+                                $.field,
+                                $.variable,
+                                $.selector_expression
+                            )
+                        ),
                         token.immediate('.'),
                         field('field', $._field_identifier)
                     )
@@ -360,13 +374,13 @@ module.exports = function make_grammar(dialect) {
                     $.imaginary_literal
                 ),
 
-            int_literal: ($) => token(intLiteral),
+            int_literal: (_) => token(intLiteral),
 
-            float_literal: ($) => token(floatLiteral),
+            float_literal: (_) => token(floatLiteral),
 
-            imaginary_literal: ($) => token(imaginaryLiteral),
+            imaginary_literal: (_) => token(imaginaryLiteral),
 
-            rune_literal: ($) =>
+            rune_literal: (_) =>
                 token(
                     seq(
                         "'",
@@ -418,17 +432,17 @@ module.exports = function make_grammar(dialect) {
 
             _boolean_literal: ($) => choice($.true, $.false),
 
-            true: ($) => 'true',
-            false: ($) => 'false',
+            true: (_) => 'true',
+            false: (_) => 'false',
 
-            nil: ($) => 'nil',
+            nil: (_) => 'nil',
 
-            dot: ($) => prec(1, '.'),
+            dot: (_) => prec(1, '.'),
 
             _string_literal: ($) =>
                 choice($.raw_string_literal, $.interpreted_string_literal),
 
-            raw_string_literal: ($) => token(seq('`', repeat(/[^`]/), '`')),
+            raw_string_literal: (_) => token(seq('`', repeat(/[^`]/), '`')),
 
             interpreted_string_literal: ($) =>
                 seq(
@@ -442,7 +456,7 @@ module.exports = function make_grammar(dialect) {
                     token.immediate('"')
                 ),
 
-            escape_sequence: ($) =>
+            escape_sequence: (_) =>
                 token.immediate(
                     seq(
                         '\\',
@@ -460,16 +474,8 @@ module.exports = function make_grammar(dialect) {
             comment: (_) =>
                 token.immediate(seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/')),
 
-            _left_delimiter: ($) => choice(token('{{'), token('{{-')),
-            _right_delimiter: ($) => choice(token('}}'), token('-}}')),
+            _left_delimiter: (_) => choice(token('{{'), token('{{-')),
+            _right_delimiter: (_) => choice(token('}}'), token('-}}')),
         },
     })
-}
-
-function sep1(separator, rule) {
-    return seq(rule, repeat(seq(separator, rule)))
-}
-
-function sep(separator, rule) {
-    return optional(sep1(separator, rule))
 }
