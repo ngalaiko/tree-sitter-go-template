@@ -1,23 +1,27 @@
 name: Build/test
 on:
-  push:
-    branches:
-      - "master"
-  pull_request:
+    push:
+        branches:
+            - 'master'
+    pull_request:
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: true
-      matrix:
-        os: [macos-latest, ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-      - run: npm test
+    test:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: true
+            matrix:
+                os: [macos-latest, ubuntu-latest]
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-python@v4
+              with:
+                  python-version: '3.11'
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '18'
+            - run: npm install
+            - name: generate grammar
+              run: npm run build
+            - name: check for uncommited changes
+              run: git diff --exit-code
+            - run: npm test
