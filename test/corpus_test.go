@@ -11,9 +11,10 @@ import (
 )
 
 var (
-	TESTCASE_SEPERATOR     = regexp.MustCompile("\n(=+)\n")
-	INPUT_OUTPUT_SEPERATOR = regexp.MustCompile("\n(---)\n")
-	TESTS_DIR              = "./corpus"
+	TESTCASE_SEPERATOR      = regexp.MustCompile("(?m)^(=+)$")
+	INPUT_OUTPUT_SEPERATOR  = regexp.MustCompile("\n(---)\n")
+	TRIM_TESTCASE_SEPERATOR = regexp.MustCompile("^(=+)\n")
+	TESTS_DIR               = "./corpus"
 )
 
 func TestCorpus(t *testing.T) {
@@ -69,7 +70,15 @@ func NewTestCase(file, name, input, sExpression string) TestCase {
 
 func getTestCasesForFile(filename string, content string) []TestCase {
 	testCases := []TestCase{}
-	parts := TESTCASE_SEPERATOR.Split(content, -1)
+	partsWithEmptyParts := TESTCASE_SEPERATOR.Split(content, -1)
+	parts := []string{}
+
+	// remove empty parts
+	for i := 0; i < len(partsWithEmptyParts); i++ {
+		if partsWithEmptyParts[i] != "" {
+			parts = append(parts, partsWithEmptyParts[i])
+		}
+	}
 
 	for i := 0; i < len(parts); i++ {
 		if i%2 == 0 && len(parts) > i+1 {
