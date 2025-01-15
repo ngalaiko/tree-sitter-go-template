@@ -15,7 +15,8 @@
         "nan": "^2.22.0"
     },
     "devDependencies": {
-        "tree-sitter-cli": "^0.24.7"
+        "tree-sitter-cli": "^0.24.7",
+        "prettier": "^3.4.2"
     },
     "scripts": {
         "build": "tree-sitter generate && node-gyp build && npm run build-helm",
