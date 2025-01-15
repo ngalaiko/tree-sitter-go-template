@@ -223,7 +223,7 @@ module.exports = function make_grammar(dialect) {
                     $._left_delimiter,
                     'block',
                     field('name', $._string_literal),
-                    optional(field('argument', $._pipeline)),
+                    field('argument', $._pipeline),
                     $._right_delimiter,
 
                     field('body', repeat($._block)),

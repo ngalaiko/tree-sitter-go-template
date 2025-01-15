@@ -64,7 +64,7 @@ func NewTestCase(file, name, input, sExpression string) TestCase {
 		name:        fmt.Sprintf("%s: %s", file, name),
 		input:       input,
 		sExpression: sExpression,
-		isError:     strings.Contains(sExpression, "(ERROR"),
+		isError:     strings.Contains(sExpression, "(ERROR") || strings.Contains(sExpression, "(MISSING"),
 	}
 }
 
