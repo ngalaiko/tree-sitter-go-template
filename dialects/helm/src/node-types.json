@@ -190,7 +190,7 @@
     "fields": {
       "argument": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "assignment",
