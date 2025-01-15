@@ -566,20 +566,12 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "FIELD",
-              "name": "argument",
-              "content": {
-                "type": "SYMBOL",
-                "name": "_pipeline"
-              }
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "FIELD",
+          "name": "argument",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_pipeline"
+          }
         },
         {
           "type": "SYMBOL",
