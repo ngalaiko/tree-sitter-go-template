@@ -70,13 +70,12 @@ func NewTestCase(file, name, input, sExpression string) TestCase {
 
 func getTestCasesForFile(filename string, content string) []TestCase {
 	testCases := []TestCase{}
-	partsWithEmptyParts := TESTCASE_SEPERATOR.Split(content, -1)
 	parts := []string{}
 
-	// remove empty parts
-	for i := 0; i < len(partsWithEmptyParts); i++ {
-		if partsWithEmptyParts[i] != "" {
-			parts = append(parts, partsWithEmptyParts[i])
+	// split and remove empty parts
+	for _, part := range TESTCASE_SEPERATOR.Split(content, -1) {
+		if part != "" {
+			parts = append(parts, part)
 		}
 	}
 
