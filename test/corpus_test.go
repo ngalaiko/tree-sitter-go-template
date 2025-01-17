@@ -35,7 +35,7 @@ func TestCorpus(t *testing.T) {
 func testTemplate(t *testing.T, input string, isError bool) {
 	t.Helper()
 
-	input = fmt.Sprintf("{{ $var := 1}} \n %s", input)
+	input = fmt.Sprintf("{{ $var := 1}} \n %s", input) // prevent variable not found errors
 	_, err := template.New("template").Funcs(
 		template.FuncMap{
 			"pipeline":     func() string { return "" },
@@ -80,26 +80,24 @@ func getTestCasesForFile(filename string, content string) []TestCase {
 		}
 	}
 
-	for i := 0; i < len(parts); i++ {
-		if i%2 == 0 && len(parts) > i+1 {
+	for i := 0; i < len(parts)-1; i += 2 {
+		testName := strings.TrimSpace(parts[i])
+		testContent := parts[i+1]
+		testParts := INPUT_OUTPUT_SEPERATOR.Split(testContent, -1)
 
-			testName := strings.TrimSpace(parts[i])
-			testContent := parts[i+1]
-			testParts := INPUT_OUTPUT_SEPERATOR.Split(testContent, -1)
-
-			if len(testParts) != 2 {
-				continue
-			}
-
-			testCases = append(testCases,
-				NewTestCase(
-					filename,
-					testName,
-					testParts[0],
-					testParts[1],
-				),
-			)
+		if len(testParts) != 2 {
+			fmt.Printf("Error parsing %s: Testcase has invalid format %s\n", filename, testName)
+			continue
 		}
+
+		testCases = append(testCases,
+			NewTestCase(
+				filename,
+				testName,
+				testParts[0],
+				testParts[1],
+			),
+		)
 	}
 
 	return testCases
