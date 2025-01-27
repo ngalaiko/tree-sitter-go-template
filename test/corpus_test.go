@@ -12,7 +12,7 @@ import (
 
 var (
 	TESTCASE_SEPARATOR      = regexp.MustCompile("(?m)^(=+)$")
-	INPUT_OUTPUT_SEPARATOR  = regexp.MustCompile("\n(---)\n")
+	INPUT_OUTPUT_SEPARATOR  = regexp.MustCompile("\n(-+)\n")
 	TRIM_TESTCASE_SEPARATOR = regexp.MustCompile("^(=+)\n")
 	TESTS_DIR               = "./corpus"
 )
@@ -73,7 +73,7 @@ func getTestCasesForFile(filename string, content string) []TestCase {
 	parts := []string{}
 
 	// split and remove empty parts
-	for _, part := range TESTCASE_SEPERATOR.Split(content, -1) {
+	for _, part := range TESTCASE_SEPARATOR.Split(content, -1) {
 		if part != "" {
 			parts = append(parts, part)
 		}
@@ -82,7 +82,7 @@ func getTestCasesForFile(filename string, content string) []TestCase {
 	for i := 0; i < len(parts)-1; i += 2 {
 		testName := strings.TrimSpace(parts[i])
 		testContent := parts[i+1]
-		testParts := INPUT_OUTPUT_SEPERATOR.Split(testContent, -1)
+		testParts := INPUT_OUTPUT_SEPARATOR.Split(testContent, -1)
 
 		if len(testParts) != 2 {
 			fmt.Printf("Error parsing %s: Testcase has invalid format %s\n", filename, testName)
