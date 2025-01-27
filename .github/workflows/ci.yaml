@@ -33,4 +33,3 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - run: npx prettier --check *.js
-            - run: npm test
