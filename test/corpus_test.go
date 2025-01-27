@@ -11,9 +11,9 @@ import (
 )
 
 var (
-	TESTCASE_SEPERATOR      = regexp.MustCompile("(?m)^(=+)$")
-	INPUT_OUTPUT_SEPERATOR  = regexp.MustCompile("\n(---)\n")
-	TRIM_TESTCASE_SEPERATOR = regexp.MustCompile("^(=+)\n")
+	TESTCASE_SEPARATOR      = regexp.MustCompile("(?m)^(=+)$")
+	INPUT_OUTPUT_SEPARATOR  = regexp.MustCompile("\n(---)\n")
+	TRIM_TESTCASE_SEPARATOR = regexp.MustCompile("^(=+)\n")
 	TESTS_DIR               = "./corpus"
 )
 
