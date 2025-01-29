@@ -317,24 +317,29 @@ define
         (text)))
 
 =============================================
-block
+invalid block (missing pipeline)
 =============================================
 {{block "name"}} T1 {{end}}
 ---
+
 (template
-    (block_action
-        (interpreted_string_literal)
-        (text)))
+  (block_action
+    (interpreted_string_literal)
+    (dot
+      (MISSING "."))
+    (text)))
 
 =============================================
 block with argument
 =============================================
 {{block "name" pipeline }} T1 {{end}}
 ---
+
 (template
-    (block_action
+  (block_action
     (interpreted_string_literal)
-    (function_call (identifier))
+    (function_call
+      (identifier))
     (text)))
 
 =============================================
@@ -342,9 +347,11 @@ with
 =============================================
 {{with pipeline}} T1 {{end}}
 ---
+
 (template
-    (with_action
-    (function_call (identifier))
+  (with_action
+    (function_call
+      (identifier))
     (text)))
 
 =============================================
@@ -352,8 +359,10 @@ with else
 =============================================
 {{with pipeline}} T1 {{else}} T0 {{end}}
 ---
+
 (template
-    (with_action
-    (function_call (identifier))
+  (with_action
+    (function_call
+      (identifier))
     (text)
     (text)))
