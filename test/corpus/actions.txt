@@ -27,7 +27,7 @@ comment */ -}}
   (comment))
 
 ============================================
-invalid comments
+Invalid comments
 ============================================
 
 {{ /* invalid comment */}}
@@ -267,6 +267,20 @@ if-else with text and template in if-else
           (text)))
 
 =============================================
+if with variable
+=============================================
+{{if $var:=5}} t1 {{end}}
+---
+
+(template
+  (if_action
+    (variable_definition
+      (variable
+        (identifier))
+      (int_literal))
+    (text)))
+
+=============================================
 range
 =============================================
 {{range pipeline}} t1 {{ end }}
@@ -288,6 +302,20 @@ range else
         (text)))
 
 =============================================
+Invalid range
+=============================================
+{{range $var=5}} t1 {{ end }}
+---
+
+(template
+  (range_action
+    (ERROR
+      (variable
+        (identifier)))
+      (int_literal)
+    (text)))
+
+=============================================
 template
 =============================================
 {{template "name"}}
@@ -307,6 +335,20 @@ template with argument
         (function_call (identifier))))
 
 =============================================
+Invalid template
+=============================================
+{{template "name" $var=5}}
+---
+
+(template
+  (template_action
+    (interpreted_string_literal)
+    (ERROR
+      (variable
+        (identifier)))
+    (int_literal)))
+
+=============================================
 define
 =============================================
 {{define "name"}} t1 {{ end }}
@@ -317,7 +359,7 @@ define
         (text)))
 
 =============================================
-invalid block (missing pipeline)
+Invalid block (missing pipeline)
 =============================================
 {{block "name"}} T1 {{end}}
 ---
