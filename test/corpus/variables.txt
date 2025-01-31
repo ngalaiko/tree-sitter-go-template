@@ -3,7 +3,9 @@ Variable definition
 ====================================
 {{ $variable := pipeline }}
 {{ $1var := pipeline }}
+{{ $variable2 := ($variable2 := 5) }}
 ---
+
 (template
   (variable_definition
     (variable
@@ -15,7 +17,16 @@ Variable definition
     (variable
       (identifier))
     (function_call
-      (identifier))))
+      (identifier)))
+  (text)
+  (variable_definition
+    (variable
+      (identifier))
+    (parenthesized_pipeline
+      (variable_definition
+        (variable
+          (identifier))
+        (int_literal)))))
 
 ====================================
 Variable assignment
@@ -41,3 +52,33 @@ Range pipeline assignment
                 (identifier)))
         (variable (identifier))
         (variable (identifier))))
+
+====================================
+Invalid variable definition
+====================================
+{{ $variable := $variable := 5 }}
+---
+
+(template
+  (variable_definition
+    (variable
+      (identifier))
+    (variable
+      (identifier)))
+  (ERROR
+    (int_literal)))
+
+====================================
+Invalid variable assignment
+====================================
+{{ $var = $var = 5 }}
+------------------------------------
+
+(template
+  (assignment
+    (variable
+      (identifier))
+    (variable
+      (identifier)))
+  (ERROR
+    (int_literal)))
