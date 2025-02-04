@@ -36,6 +36,21 @@ Function with arguments
             (int_literal))))
 
 ====================================
+Invalid Function
+====================================
+{{ functionName $var=5 }}
+---
+
+(template
+  (function_call
+    (identifier)
+    (argument_list
+      (variable
+        (identifier))
+      (ERROR
+        (int_literal)))))
+
+====================================
 Method without arguments
 ====================================
 {{ .Method }}
