@@ -166,8 +166,7 @@ module.exports = function make_grammar(dialect) {
 
             range_variable_definition: ($) =>
                 seq(
-                    field('index', $.variable),
-                    ',',
+                    optional(seq(field('index', $.variable), ',')),
                     field('element', $.variable),
                     token(':='),
                     field('range', $._pipeline)
