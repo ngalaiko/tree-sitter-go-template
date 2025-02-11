@@ -164,7 +164,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_pipeline"
+          "name": "_pipeline_or_variable"
         },
         {
           "type": "SYMBOL",
@@ -188,7 +188,7 @@
           "name": "condition",
           "content": {
             "type": "SYMBOL",
-            "name": "_pipeline"
+            "name": "_pipeline_or_variable"
           }
         },
         {
@@ -254,7 +254,7 @@
             "name": "condition",
             "content": {
               "type": "SYMBOL",
-              "name": "_pipeline"
+              "name": "_pipeline_or_variable"
             }
           },
           {
@@ -570,7 +570,7 @@
           "name": "argument",
           "content": {
             "type": "SYMBOL",
-            "name": "_pipeline"
+            "name": "_pipeline_or_variable"
           }
         },
         {
@@ -618,7 +618,7 @@
           "name": "condition",
           "content": {
             "type": "SYMBOL",
-            "name": "_pipeline"
+            "name": "_pipeline_or_variable"
           }
         },
         {
@@ -686,6 +686,23 @@
         }
       ]
     },
+    "_pipeline_or_variable": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_pipeline"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "assignment"
+        }
+      ]
+    },
     "_pipeline": {
       "type": "CHOICE",
       "members": [
@@ -708,14 +725,6 @@
         {
           "type": "SYMBOL",
           "name": "parenthesized_pipeline"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "variable_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "assignment"
         }
       ]
     },
@@ -799,7 +808,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_pipeline"
+          "name": "_pipeline_or_variable"
         },
         {
           "type": "STRING",

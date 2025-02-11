@@ -117,13 +117,17 @@ module.exports = function make_grammar(dialect) {
                 ),
 
             _pipeline_action: ($) =>
-                seq($._left_delimiter, $._pipeline, $._right_delimiter),
+                seq(
+                    $._left_delimiter,
+                    $._pipeline_or_variable,
+                    $._right_delimiter
+                ),
 
             if_action: ($) =>
                 seq(
                     $._left_delimiter,
                     'if',
-                    field('condition', $._pipeline),
+                    field('condition', $._pipeline_or_variable),
                     $._right_delimiter,
 
                     field('consequence', repeat($._block)),
@@ -140,7 +144,7 @@ module.exports = function make_grammar(dialect) {
                     seq(
                         $._left_delimiter,
                         'else if',
-                        field('condition', $._pipeline),
+                        field('condition', $._pipeline_or_variable),
                         $._right_delimiter,
                         field('option', repeat($._block))
                     )
@@ -223,7 +227,7 @@ module.exports = function make_grammar(dialect) {
                     $._left_delimiter,
                     'block',
                     field('name', $._string_literal),
-                    field('argument', $._pipeline),
+                    field('argument', $._pipeline_or_variable),
                     $._right_delimiter,
 
                     field('body', repeat($._block)),
@@ -237,7 +241,7 @@ module.exports = function make_grammar(dialect) {
                 seq(
                     $._left_delimiter,
                     'with',
-                    field('condition', $._pipeline),
+                    field('condition', $._pipeline_or_variable),
                     $._right_delimiter,
 
                     field('consequence', repeat($._block)),
@@ -256,15 +260,15 @@ module.exports = function make_grammar(dialect) {
                     $._right_delimiter
                 ),
 
+            _pipeline_or_variable: ($) =>
+                choice($._pipeline, $.variable_definition, $.assignment),
             _pipeline: ($) =>
                 choice(
                     $._expression,
                     $.function_call,
                     $.method_call,
                     $.chained_pipeline,
-                    $.parenthesized_pipeline,
-                    $.variable_definition,
-                    $.assignment
+                    $.parenthesized_pipeline
                 ),
 
             variable_definition: ($) =>
@@ -284,7 +288,8 @@ module.exports = function make_grammar(dialect) {
             chained_pipeline: ($) =>
                 prec.left(PREC.primary, seq($._pipeline, '|', $._pipeline)),
 
-            parenthesized_pipeline: ($) => seq('(', $._pipeline, ')'),
+            parenthesized_pipeline: ($) =>
+                seq('(', $._pipeline_or_variable, ')'),
 
             method_call: ($) =>
                 seq(
