@@ -105,6 +105,21 @@ A longer chain.
                 (interpreted_string_literal)))))
 
 ====================================
+Invalid chain
+====================================
+{{"output" | $variable := 5 | printf }}
+---
+(template
+  (chained_pipeline
+    (chained_pipeline
+      (interpreted_string_literal)
+      (variable
+        (identifier)))
+    (ERROR
+      (int_literal))
+    (function_call
+      (identifier))))
+====================================
 A with action using dot.
 ====================================
 {{with "output"}}{{printf "%q" .}}{{end}}

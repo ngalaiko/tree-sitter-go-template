@@ -8,10 +8,6 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
-          "named": true
-        },
-        {
           "type": "chained_pipeline",
           "named": true
         },
@@ -78,10 +74,6 @@
         {
           "type": "variable",
           "named": true
-        },
-        {
-          "type": "variable_definition",
-          "named": true
         }
       ]
     }
@@ -94,10 +86,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "assignment",
-            "named": true
-          },
           {
             "type": "chained_pipeline",
             "named": true
@@ -164,10 +152,6 @@
           },
           {
             "type": "variable",
-            "named": true
-          },
-          {
-            "type": "variable_definition",
             "named": true
           }
         ]
@@ -433,10 +417,6 @@
       "required": true,
       "types": [
         {
-          "type": "assignment",
-          "named": true
-        },
-        {
           "type": "chained_pipeline",
           "named": true
         },
@@ -502,10 +482,6 @@
         },
         {
           "type": "variable",
-          "named": true
-        },
-        {
-          "type": "variable_definition",
           "named": true
         }
       ]
@@ -1635,10 +1611,6 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
-            "named": true
-          },
-          {
             "type": "chained_pipeline",
             "named": true
           },
@@ -1704,10 +1676,6 @@
           },
           {
             "type": "variable",
-            "named": true
-          },
-          {
-            "type": "variable_definition",
             "named": true
           }
         ]
@@ -1740,7 +1708,7 @@
       },
       "index": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "variable",
@@ -1752,10 +1720,6 @@
         "multiple": false,
         "required": true,
         "types": [
-          {
-            "type": "assignment",
-            "named": true
-          },
           {
             "type": "chained_pipeline",
             "named": true
@@ -1822,10 +1786,6 @@
           },
           {
             "type": "variable",
-            "named": true
-          },
-          {
-            "type": "variable_definition",
             "named": true
           }
         ]
@@ -2003,10 +1963,6 @@
         "required": false,
         "types": [
           {
-            "type": "assignment",
-            "named": true
-          },
-          {
             "type": "chained_pipeline",
             "named": true
           },
@@ -2072,10 +2028,6 @@
           },
           {
             "type": "variable",
-            "named": true
-          },
-          {
-            "type": "variable_definition",
             "named": true
           }
         ]
@@ -2126,10 +2078,6 @@
         "required": true,
         "types": [
           {
-            "type": "assignment",
-            "named": true
-          },
-          {
             "type": "chained_pipeline",
             "named": true
           },
@@ -2195,10 +2143,6 @@
           },
           {
             "type": "variable",
-            "named": true
-          },
-          {
-            "type": "variable_definition",
             "named": true
           }
         ]
