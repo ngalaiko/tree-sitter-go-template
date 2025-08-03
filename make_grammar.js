@@ -143,7 +143,7 @@ module.exports = function make_grammar(dialect) {
                     PREC.else_if,
                     seq(
                         $._left_delimiter,
-                        'else if',
+                        'else', 'if',
                         field('condition', $._pipeline),
                         $._right_delimiter,
                         field('option', repeat($._block))
@@ -271,7 +271,7 @@ module.exports = function make_grammar(dialect) {
                     PREC.else_with,
                     seq(
                         $._left_delimiter,
-                        'else with',
+                        'else', 'with',
                         field('condition', $._pipeline),
                         $._right_delimiter,
                         field('option', repeat($._block))

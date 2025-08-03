@@ -255,7 +255,11 @@
           },
           {
             "type": "STRING",
-            "value": "else if"
+            "value": "else"
+          },
+          {
+            "type": "STRING",
+            "value": "if"
           },
           {
             "type": "FIELD",
@@ -719,7 +723,11 @@
           },
           {
             "type": "STRING",
-            "value": "else with"
+            "value": "else"
+          },
+          {
+            "type": "STRING",
+            "value": "with"
           },
           {
             "type": "FIELD",

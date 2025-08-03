@@ -2880,14 +2880,6 @@
     "named": false
   },
   {
-    "type": "else if",
-    "named": false
-  },
-  {
-    "type": "else with",
-    "named": false
-  },
-  {
     "type": "end",
     "named": false
   },
