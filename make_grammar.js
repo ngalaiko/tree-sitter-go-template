@@ -1,6 +1,7 @@
 const PREC = {
         primary: 1,
         else_if: 1,
+        else_with: 1,
         else: 2,
     },
     unicodeLetter = /\p{L}/,
@@ -69,6 +70,7 @@ module.exports = function make_grammar(dialect) {
             // else clause in not solveable with LR(1)
             [$._else_clause],
             [$._else_if_clause],
+            [$._else_with_clause],
         ],
         rules: {
             template: ($) => repeat($._block),
@@ -96,6 +98,8 @@ module.exports = function make_grammar(dialect) {
                         $._pipeline_action,
                         $.if_action,
                         $.range_action,
+                        $.break_action,
+                        $.continue_action,
                         $.template_action,
                         $.define_action,
                         $.block_action,
@@ -194,6 +198,20 @@ module.exports = function make_grammar(dialect) {
                     'end',
                     $._right_delimiter
                 ),
+                
+            break_action: ($) =>
+                seq(
+                    $._left_delimiter,
+                    'break',
+                    $._right_delimiter
+                ),
+                
+            continue_action: ($) =>
+                seq(
+                    $._left_delimiter,
+                    'continue',
+                    $._right_delimiter
+                ),
 
             template_action: ($) =>
                 seq(
@@ -242,19 +260,26 @@ module.exports = function make_grammar(dialect) {
 
                     field('consequence', repeat($._block)),
 
-                    optional(
-                        seq(
-                            $._left_delimiter,
-                            'else',
-                            $._right_delimiter,
-                            field('alternative', repeat($._block))
-                        )
-                    ),
+                    repeat($._else_with_clause),
 
-                    $._left_delimiter,
-                    'end',
-                    $._right_delimiter
+                    optional($._else_clause),
+                    prec.right(0, $._with_actions_end)
                 ),
+
+            _else_with_clause: ($) =>
+                prec.dynamic(
+                    PREC.else_with,
+                    seq(
+                        $._left_delimiter,
+                        'else with',
+                        field('condition', $._pipeline),
+                        $._right_delimiter,
+                        field('option', repeat($._block))
+                    )
+                ),
+
+            _with_actions_end: ($) =>
+                seq($._left_delimiter, 'end', $._right_delimiter),
 
             _pipeline: ($) =>
                 choice(

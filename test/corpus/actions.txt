@@ -288,6 +288,30 @@ range else
         (text)))
 
 =============================================
+range break
+=============================================
+{{range pipeline}} {{break}} {{ end }}
+---
+(template
+    (range_action
+        (function_call (identifier))
+        (text)
+        (break_action)
+        (text)))
+
+=============================================
+range continue
+=============================================
+{{range pipeline}} {{continue}} {{ end }}
+---
+(template
+    (range_action
+        (function_call (identifier))
+        (text)
+        (continue_action)
+        (text)))
+
+=============================================
 template
 =============================================
 {{template "name"}}
@@ -362,6 +386,22 @@ with else
 
 (template
   (with_action
+    (function_call
+      (identifier))
+    (text)
+    (text)))
+
+=============================================
+with else with
+=============================================
+{{with pipeline}} T2 {{else with pipeline}} T1 {{else}} T0 {{end}}
+---
+
+(template
+  (with_action
+    (function_call
+      (identifier))
+    (text)
     (function_call
       (identifier))
     (text)
