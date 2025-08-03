@@ -107,6 +107,9 @@ module.exports = function make_grammar(dialect) {
                     )
                 ),
 
+            _action_end: ($) =>
+                seq($._left_delimiter, 'end', $._right_delimiter),
+
             _comment_action: ($) =>
                 seq(
                     choice(
@@ -135,7 +138,7 @@ module.exports = function make_grammar(dialect) {
                     repeat($._else_if_clause),
 
                     optional($._else_clause),
-                    prec.right(0, $._if_actions_end)
+                    prec.right(0, $._action_end)
                 ),
 
             _else_if_clause: ($) =>
@@ -161,8 +164,17 @@ module.exports = function make_grammar(dialect) {
                     )
                 ),
 
-            _if_actions_end: ($) =>
-                seq($._left_delimiter, 'end', $._right_delimiter),
+            _else_with_clause: ($) =>
+                prec.dynamic(
+                    PREC.else_with,
+                    seq(
+                        $._left_delimiter,
+                        'else', 'with',
+                        field('condition', $._pipeline),
+                        $._right_delimiter,
+                        field('option', repeat($._block))
+                    )
+                ),
 
             range_variable_definition: ($) =>
                 seq(
@@ -263,23 +275,8 @@ module.exports = function make_grammar(dialect) {
                     repeat($._else_with_clause),
 
                     optional($._else_clause),
-                    prec.right(0, $._with_actions_end)
+                    prec.right(0, $._action_end)
                 ),
-
-            _else_with_clause: ($) =>
-                prec.dynamic(
-                    PREC.else_with,
-                    seq(
-                        $._left_delimiter,
-                        'else', 'with',
-                        field('condition', $._pipeline),
-                        $._right_delimiter,
-                        field('option', repeat($._block))
-                    )
-                ),
-
-            _with_actions_end: ($) =>
-                seq($._left_delimiter, 'end', $._right_delimiter),
 
             _pipeline: ($) =>
                 choice(
