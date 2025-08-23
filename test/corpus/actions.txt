@@ -288,6 +288,30 @@ range else
         (text)))
 
 =============================================
+range break
+=============================================
+{{range pipeline}} {{break}} {{ end }}
+---
+(template
+    (range_action
+        (function_call (identifier))
+        (text)
+        (break_action)
+        (text)))
+
+=============================================
+range continue
+=============================================
+{{range pipeline}} {{continue}} {{ end }}
+---
+(template
+    (range_action
+        (function_call (identifier))
+        (text)
+        (continue_action)
+        (text)))
+
+=============================================
 template
 =============================================
 {{template "name"}}
@@ -366,3 +390,140 @@ with else
       (identifier))
     (text)
     (text)))
+
+=============================================
+with else with
+=============================================
+{{with pipeline}} T2 {{else with pipeline}} T1 {{else}} T0 {{end}}
+---
+
+(template
+  (with_action
+    (function_call
+      (identifier))
+    (text)
+    (function_call
+      (identifier))
+    (text)
+    (text)))
+
+=============================================
+with else with text and template in with
+=============================================
+{{with pipeline}} t1 {{ pipeline }} {{ else }} t2 {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (text)))
+
+=============================================
+with-else with text and template in with
+=============================================
+{{with pipeline}} t1 {{ pipeline }} {{ else with pipeline }} t2 {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)))
+
+=============================================
+with-else else with template and text in else
+=============================================
+{{with pipeline}} t1 {{ else with pipeline }} t2 {{ else }} {{ .Values.test }} test {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+        (text)))
+
+=============================================
+with-else else with text and template in else
+=============================================
+{{with pipeline}} t1 {{ else with pipeline }} t2 {{ else }} test {{ .Values.test }} {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+          (text)))
+
+=============================================
+with-else else with text and template in with-else
+=============================================
+{{with pipeline}} t1 {{ else with pipeline }} test {{ .Values.test }} {{ else }} t3 {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+        (text)
+        (text)))
+
+=============================================
+with-else else with text and template in else and text and template in with-else
+=============================================
+{{with pipeline}} t1 {{ else with pipeline }} test {{ .Values.test }} {{ else }} t3 {{ .Values.test }} {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+        (text)
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+          (text)))
+
+=============================================
+with-else with text and template in with-else
+=============================================
+{{with pipeline}} t1 {{ else with pipeline }} test {{ .Values.test }} {{ end }}
+---
+(template
+    (with_action
+        (function_call (identifier))
+        (text)
+        (function_call (identifier))
+        (text)
+        (selector_expression
+          (field
+            (identifier))
+          (field_identifier))
+          (text)))

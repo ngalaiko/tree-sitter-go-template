@@ -291,11 +291,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -425,6 +433,11 @@
     }
   },
   {
+    "type": "break_action",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "chained_pipeline",
     "named": true,
     "fields": {},
@@ -512,6 +525,11 @@
     }
   },
   {
+    "type": "continue_action",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "define_action",
     "named": true,
     "fields": {
@@ -536,11 +554,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -741,11 +767,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -961,11 +995,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -1099,11 +1141,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -1375,11 +1425,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -1513,11 +1571,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -1888,11 +1954,19 @@
           "named": true
         },
         {
+          "type": "break_action",
+          "named": true
+        },
+        {
           "type": "chained_pipeline",
           "named": true
         },
         {
           "type": "comment",
+          "named": true
+        },
+        {
+          "type": "continue_action",
           "named": true
         },
         {
@@ -2240,11 +2314,19 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -2358,7 +2440,7 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -2460,11 +2542,165 @@
             "named": true
           },
           {
+            "type": "break_action",
+            "named": true
+          },
+          {
             "type": "chained_pipeline",
             "named": true
           },
           {
             "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
+            "named": true
+          },
+          {
+            "type": "define_action",
+            "named": true
+          },
+          {
+            "type": "dot",
+            "named": true
+          },
+          {
+            "type": "false",
+            "named": true
+          },
+          {
+            "type": "field",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "if_action",
+            "named": true
+          },
+          {
+            "type": "imaginary_literal",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "interpreted_string_literal",
+            "named": true
+          },
+          {
+            "type": "method_call",
+            "named": true
+          },
+          {
+            "type": "nil",
+            "named": true
+          },
+          {
+            "type": "parenthesized_pipeline",
+            "named": true
+          },
+          {
+            "type": "range_action",
+            "named": true
+          },
+          {
+            "type": "raw_string_literal",
+            "named": true
+          },
+          {
+            "type": "rune_literal",
+            "named": true
+          },
+          {
+            "type": "selector_expression",
+            "named": true
+          },
+          {
+            "type": "template_action",
+            "named": true
+          },
+          {
+            "type": "text",
+            "named": true
+          },
+          {
+            "type": "true",
+            "named": true
+          },
+          {
+            "type": "variable",
+            "named": true
+          },
+          {
+            "type": "variable_definition",
+            "named": true
+          },
+          {
+            "type": "with_action",
+            "named": true
+          },
+          {
+            "type": "yaml_no_injection_text",
+            "named": true
+          },
+          {
+            "type": "{{",
+            "named": false
+          },
+          {
+            "type": "{{-",
+            "named": false
+          },
+          {
+            "type": "}}",
+            "named": false
+          }
+        ]
+      },
+      "option": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "-}}",
+            "named": false
+          },
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "block_action",
+            "named": true
+          },
+          {
+            "type": "break_action",
+            "named": true
+          },
+          {
+            "type": "chained_pipeline",
+            "named": true
+          },
+          {
+            "type": "comment",
+            "named": true
+          },
+          {
+            "type": "continue_action",
             "named": true
           },
           {
@@ -2624,8 +2860,16 @@
     "named": false
   },
   {
+    "type": "break",
+    "named": false
+  },
+  {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "continue",
+    "named": false
   },
   {
     "type": "define",
@@ -2633,10 +2877,6 @@
   },
   {
     "type": "else",
-    "named": false
-  },
-  {
-    "type": "else if",
     "named": false
   },
   {
