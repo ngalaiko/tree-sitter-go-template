@@ -28,6 +28,20 @@ jobs:
             - name: check for uncommited changes
               run: git diff --exit-code
             - run: npm test
+
+    test_go_binding:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: true
+            matrix:
+                os: [macos-latest, ubuntu-latest]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-go@v5
+              with:
+                  go-version: '1.22.x'
+            - run: go test ./bindings/go
+
     prettier:
         runs-on: ubuntu-latest
         steps:
