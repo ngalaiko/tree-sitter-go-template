@@ -1,15 +1,20 @@
-package tree_sitter_gotmpl_test
+package tree_sitter_gotemplate_test
 
 import (
+	"context"
 	"testing"
 
-	tree_sitter "github.com/smacker/go-tree-sitter"
-	"github.com/tree-sitter/tree-sitter-gotmpl"
+	"github.com/ngalaiko/tree-sitter-go-template/bindings/go"
+	sitter "github.com/smacker/go-tree-sitter"
 )
 
-func TestCanLoadGrammar(t *testing.T) {
-	language := tree_sitter.NewLanguage(tree_sitter_gotmpl.Language())
-	if language == nil {
-		t.Errorf("Error loading Gotmpl grammar")
+func TestGrammar(t *testing.T) {
+	n, err := sitter.ParseCtx(context.Background(), []byte("{{ nil }}"), tree_sitter_gotemplate.GetLanguage())
+	if err != nil {
+		t.Error(err)
+	}
+
+	if n.String() != "(template (nil))" {
+		t.Errorf("Parsing did not work")
 	}
 }
