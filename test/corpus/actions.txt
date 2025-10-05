@@ -54,8 +54,8 @@ invalid comment 1
 
 (template
   (text)
-  (ERROR
-    (comment)))
+  (comment)
+  (ERROR))
 
 ============================================
 invalid comment 2
@@ -66,8 +66,7 @@ invalid comment 2
 
 (template
   (text)
-  (ERROR
-    (yaml_no_injection_text))
+  (MISSING " ")
   (comment))
 
 ============================================
@@ -93,8 +92,11 @@ invalid comment 4
 
 (template
   (text)
-  (ERROR)
-  (text))
+  (ERROR
+    (UNEXPECTED '/')
+    (identifier)
+    (identifier)
+    (UNEXPECTED '*'))(text))
 
 ============================================
 invalid comment 5

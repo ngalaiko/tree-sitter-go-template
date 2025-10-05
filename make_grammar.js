@@ -487,8 +487,10 @@ module.exports = function make_grammar(dialect) {
             comment: (_) =>
                 token.immediate(seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/')),
 
-            _left_delimiter: (_) => choice(token('{{'), token('{{- ')),
-            _right_delimiter: (_) => choice(token('}}'), token(' -}}')),
+            _left_delimiter: (_) =>
+                choice(token('{{'), seq(token('{{-'), token.immediate(' '))),
+            _right_delimiter: (_) => choice(token('}}'), token('-}}')),
+            // choice(token('}}'), seq(token.immediate(/\s+/), token('-}}'))), TODO: there should be a whitespace before -}}
         },
     })
 }
