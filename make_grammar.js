@@ -112,10 +112,7 @@ module.exports = function make_grammar(dialect) {
 
             _comment_action: ($) =>
                 seq(
-                    choice(
-                        token('{{'),
-                        seq(token('{{-'), token.immediate(' '))
-                    ),
+                    $._left_delimiter,
                     $.comment,
                     choice(
                         token.immediate('}}'),
@@ -490,8 +487,8 @@ module.exports = function make_grammar(dialect) {
             comment: (_) =>
                 token.immediate(seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/')),
 
-            _left_delimiter: (_) => choice(token('{{'), token('{{-')),
-            _right_delimiter: (_) => choice(token('}}'), token('-}}')),
+            _left_delimiter: (_) => choice(token('{{'), token('{{- ')),
+            _right_delimiter: (_) => choice(token('}}'), token(' -}}')),
         },
     })
 }

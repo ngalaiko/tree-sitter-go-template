@@ -27,25 +27,10 @@ comment */ -}}
   (comment))
 
 ============================================
-invalid comments
+invalid comment 0
 ============================================
 
 {{ /* invalid comment */}}
-{{/* invalid comment */ }}
-
-
-{{-/* invalid comment */ -}}
-{{- /* invalid comment */-}}
-
-{{-
- /* invalid comment */ -}}
-{{- /* invalid comment */
- -}}
-
-{{- 
-/* invalid comment */ -}}
-{{- /* invalid comment */ 
--}}
 --------------------------------------------
 
 (template
@@ -58,33 +43,82 @@ invalid comments
       (argument_list
         (function_call
           (identifier))))
-    (UNEXPECTED '*'))
+    (UNEXPECTED '*')))
+
+============================================
+invalid comment 1
+============================================
+
+{{/* invalid comment */ }}
+--------------------------------------------
+
+(template
+  (text)
+  (ERROR
+    (comment)))
+
+============================================
+invalid comment 2
+============================================
+
+{{-/* invalid comment */ -}}
+--------------------------------------------
+
+(template
+  (text)
+  (ERROR
+    (yaml_no_injection_text))
+  (comment))
+
+============================================
+invalid comment 3
+============================================
+
+{{- /* invalid comment */-}}
+--------------------------------------------
+
+(template
   (text)
   (comment)
+  (ERROR
+    (yaml_no_injection_text)))
+
+============================================
+invalid comment 4
+============================================
+
+{{-
+ /* invalid comment */ -}}
+--------------------------------------------
+
+(template
+  (text)
   (ERROR)
-  (text)
-  (ERROR
-    (comment))
-  (text)
-  (comment)
-  (ERROR
-    (yaml_no_injection_text))
-  (text)
-  (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
-    (UNEXPECTED '*'))
+  (text))
+
+============================================
+invalid comment 5
+============================================
+
+{{- /* invalid comment */
+ -}}
+--------------------------------------------
+
+(template
   (text)
   (comment)
   (ERROR
-    (yaml_no_injection_text))
-  (text)
-  (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
-    (UNEXPECTED '*'))
+    (yaml_no_injection_text)))
+
+============================================
+invalid comment 6
+============================================
+
+{{- /* invalid comment */ 
+-}}
+--------------------------------------------
+
+(template
   (text)
   (comment)
   (MISSING "-}}")
