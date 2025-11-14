@@ -147,6 +147,15 @@ pipeline
 (template
     (function_call (identifier)))
 
+============================================
+pipeline with leading whitespace trimming
+============================================
+{{- pipeline }}
+---
+
+(template
+    (function_call (identifier)))
+
 =============================================
 if
 =============================================
