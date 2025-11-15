@@ -112,10 +112,7 @@ module.exports = function make_grammar(dialect) {
 
             _comment_action: ($) =>
                 seq(
-                    choice(
-                        token('{{'),
-                        seq(token('{{-'), token.immediate(/\s/))
-                    ),
+                    choice(token('{{'), token(seq('{{-', /\s/))),
                     $.comment,
                     choice(
                         token.immediate('}}'),
