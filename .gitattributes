@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# Generated source files
+src/*.json linguist-generated
+src/parser.c linguist-generated
+src/tree_sitter/* linguist-generated
+
+dialects/helm/src/*.json linguist-generated
+dialects/helm/src/parser.c linguist-generated
+dialects/helm/src/tree_sitter/* linguist-generated
+
