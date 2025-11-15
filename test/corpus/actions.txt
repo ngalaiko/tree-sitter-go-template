@@ -67,8 +67,8 @@ invalid comment - no space after {{-
 (template
   (text)
   (ERROR
-    (comment))
-  (text))
+    (yaml_no_injection_text))
+  (comment))
 
 ============================================
 invalid comment - no space before -}}
@@ -94,9 +94,13 @@ invalid comment - newline and space after {{-
 (template
   (text)
   (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
+    (ERROR
+      (UNEXPECTED '/'))
+    (function_call
+      (identifier)
+      (argument_list
+        (function_call
+          (identifier))))
     (UNEXPECTED '*'))
   (text))
 
