@@ -27,26 +27,11 @@ comment */ -}}
   (comment))
 
 ============================================
-invalid comments
+invalid comment - space after opening delimiter
 ============================================
 
 {{ /* invalid comment */}}
-{{/* invalid comment */ }}
-
-
-{{-/* invalid comment */ -}}
-{{- /* invalid comment */-}}
-
-{{-
- /* invalid comment */ -}}
-{{- /* invalid comment */
- -}}
-
-{{- 
-/* invalid comment */ -}}
-{{- /* invalid comment */ 
--}}
---------------------------------------------
+---
 
 (template
   (text)
@@ -58,37 +43,107 @@ invalid comments
       (argument_list
         (function_call
           (identifier))))
-    (UNEXPECTED '*'))
+    (UNEXPECTED '*')))
+
+============================================
+invalid comment - space before closing delimiter
+============================================
+
+{{/* invalid comment */ }}
+---
+
+(template
   (text)
   (comment)
-  (ERROR)
+  (ERROR))
+
+============================================
+invalid comment - no space after {{-
+============================================
+
+{{-/* invalid comment */ -}}
+---
+
+(template
   (text)
   (ERROR
     (comment))
-  (text)
-  (comment)
-  (ERROR
-    (yaml_no_injection_text))
-  (text)
-  (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
-    (UNEXPECTED '*'))
-  (text)
-  (comment)
-  (ERROR
-    (yaml_no_injection_text))
-  (text)
-  (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
-    (UNEXPECTED '*'))
-  (text)
-  (comment)
-  (MISSING "-}}")
   (text))
+
+============================================
+invalid comment - no space before -}}
+============================================
+
+{{- /* invalid comment */-}}
+---
+
+(template
+  (text)
+  (comment)
+  (ERROR
+    (yaml_no_injection_text)))
+
+============================================
+invalid comment - newline after {{-
+============================================
+
+{{-
+ /* invalid comment */ -}}
+---
+
+(template
+  (text)
+  (ERROR
+    (UNEXPECTED '/')
+    (identifier)
+    (identifier)
+    (UNEXPECTED '*'))
+  (text))
+
+============================================
+invalid comment - newline before -}}
+============================================
+
+{{- /* invalid comment */
+ -}}
+---
+
+(template
+  (text)
+  (comment)
+  (ERROR
+    (yaml_no_injection_text)))
+
+============================================
+invalid comment - tab/space after {{-
+============================================
+
+{{-
+/* invalid comment */ -}}
+---
+
+(template
+  (text)
+  (ERROR
+    (UNEXPECTED '/')
+    (identifier)
+    (identifier)
+    (UNEXPECTED '*'))
+  (text))
+
+============================================
+invalid comment - tab/space before -}}
+============================================
+
+{{- /* invalid comment */
+-}}
+---
+
+(template
+  (text)
+  (comment)
+  (ERROR
+    (yaml_no_injection_text)))
 
 ============================================
 pipeline
