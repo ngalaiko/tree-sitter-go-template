@@ -167,6 +167,27 @@ if
         (text)))
 
 =============================================
+if with leading whitespace trimming
+=============================================
+{{- if pipeline }} t1 {{end}}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)))
+
+=============================================
+if with leading whitespace trimming and newline
+=============================================
+{{-
+if pipeline }} t1 {{end}}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)))
+
+=============================================
 if else
 =============================================
 {{if pipeline}} t1 {{ else }} t2 {{ end }}
