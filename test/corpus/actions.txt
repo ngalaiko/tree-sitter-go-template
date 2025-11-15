@@ -84,7 +84,7 @@ invalid comment - no space before -}}
     (yaml_no_injection_text)))
 
 ============================================
-invalid comment - newline after {{-
+invalid comment - newline and space after {{-
 ============================================
 
 {{-
@@ -101,7 +101,7 @@ invalid comment - newline after {{-
   (text))
 
 ============================================
-invalid comment - newline before -}}
+invalid comment - newline and space before -}}
 ============================================
 
 {{- /* invalid comment */
@@ -111,39 +111,32 @@ invalid comment - newline before -}}
 (template
   (text)
   (comment)
-  (ERROR
-    (yaml_no_injection_text)))
+  (MISSING "-}}")
+  (text))
 
 ============================================
-invalid comment - tab/space after {{-
+valid comment - exactly one newline after {{-
 ============================================
 
 {{-
-/* invalid comment */ -}}
+/* valid comment */ -}}
 ---
 
 (template
   (text)
-  (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
-    (UNEXPECTED '*'))
-  (text))
+  (comment))
 
 ============================================
-invalid comment - tab/space before -}}
+valid comment - exactly one newline before -}}
 ============================================
 
-{{- /* invalid comment */
+{{- /* valid comment */
 -}}
 ---
 
 (template
   (text)
-  (comment)
-  (ERROR
-    (yaml_no_injection_text)))
+  (comment))
 
 ============================================
 pipeline

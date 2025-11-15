@@ -114,12 +114,12 @@ module.exports = function make_grammar(dialect) {
                 seq(
                     choice(
                         token('{{'),
-                        seq(token('{{-'), token.immediate(' '))
+                        seq(token('{{-'), token.immediate(/\s/))
                     ),
                     $.comment,
                     choice(
                         token.immediate('}}'),
-                        seq(token.immediate(' '), token.immediate('-}}'))
+                        seq(token.immediate(/\s/), token.immediate('-}}'))
                     )
                 ),
 
