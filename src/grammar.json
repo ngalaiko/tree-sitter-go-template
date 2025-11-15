@@ -123,23 +123,20 @@
               }
             },
             {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "TOKEN",
-                  "content": {
+              "type": "TOKEN",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
                     "type": "STRING",
                     "value": "{{-"
-                  }
-                },
-                {
-                  "type": "IMMEDIATE_TOKEN",
-                  "content": {
+                  },
+                  {
                     "type": "PATTERN",
                     "value": "\\s"
                   }
-                }
-              ]
+                ]
+              }
             }
           ]
         },
