@@ -123,20 +123,25 @@
               }
             },
             {
-              "type": "TOKEN",
+              "type": "ALIAS",
               "content": {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": "{{-"
-                  },
-                  {
-                    "type": "PATTERN",
-                    "value": "\\s"
-                  }
-                ]
-              }
+                "type": "TOKEN",
+                "content": {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "{{-"
+                    },
+                    {
+                      "type": "PATTERN",
+                      "value": "\\s"
+                    }
+                  ]
+                }
+              },
+              "named": false,
+              "value": "{{-"
             }
           ]
         },
