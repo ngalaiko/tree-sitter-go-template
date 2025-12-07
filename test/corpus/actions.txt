@@ -67,8 +67,8 @@ invalid comment - no space after {{-
 (template
   (text)
   (ERROR
-    (comment))
-  (text))
+    (yaml_no_injection_text))
+  (comment))
 
 ============================================
 invalid comment - no space before -}}
@@ -94,9 +94,13 @@ invalid comment - newline and space after {{-
 (template
   (text)
   (ERROR
-    (UNEXPECTED '/')
-    (identifier)
-    (identifier)
+    (ERROR
+      (UNEXPECTED '/'))
+    (function_call
+      (identifier)
+      (argument_list
+        (function_call
+          (identifier))))
     (UNEXPECTED '*'))
   (text))
 
@@ -147,10 +151,40 @@ pipeline
 (template
     (function_call (identifier)))
 
+============================================
+pipeline with leading whitespace trimming
+============================================
+{{- pipeline }}
+---
+
+(template
+    (function_call (identifier)))
+
 =============================================
 if
 =============================================
 {{if pipeline}} t1 {{end}}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)))
+
+=============================================
+if with leading whitespace trimming
+=============================================
+{{- if pipeline }} t1 {{end}}
+---
+(template
+    (if_action
+        (function_call (identifier))
+        (text)))
+
+=============================================
+if with leading whitespace trimming and newline
+=============================================
+{{-
+if pipeline }} t1 {{end}}
 ---
 (template
     (if_action
