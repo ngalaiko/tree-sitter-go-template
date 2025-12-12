@@ -1,0 +1,181 @@
+====================================
+Number literals.
+====================================
+{{ 0 }}
+{{ 42 }}
+{{ 007 }}           // octal
+{{ 00 }}            // extra zero
+{{ 0o77 }}          // explicit octal
+{{ 0b1010 }}        // binary
+{{ 0x1F }}          // hex
+{{ 0XABC }}         // hex uppercase
+{{ 123_456 }}       // digit separator
+{{ 1_000_000 }}     // large number with underscores
+
+{{ 0.0 }}
+{{ 3.1415 }}
+{{ 1.0e10 }}
+{{ 2.5E-3 }}
+{{ .5 }}
+{{ 0.5e+1 }}
+{{ 1_234.567_890 }}     // float with underscores
+{{ .5e1 }}
+
+{{ 0x1.fp10 }}           // hex float
+{{ 0xABC.123p+3 }}
+
+{{ 0b1010_0101 }}        // binary with underscores
+{{ 0o7_7 }}               // octal with underscores
+{{ 0xAB_CD_EF }}          // hex with underscores
+---
+(template
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (float_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text)
+   (int_literal)
+   (text))
+
+====================================
+Negative number literals.
+====================================
+{{ -0 }}
+{{ -42 }}
+{{ -0xFF }}
+{{ -0o77 }}
+{{ -0b1010 }}
+
+{{ -0.0 }}
+{{ -3.14 }}
+{{ -1.0e5 }}
+{{ -0.5e+2 }}
+{{ -.5e-1 }}
+{{ -0x1.fp-2 }}
+---
+(template
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal))
+
+====================================
+Positive number literals.
+====================================
+{{ +0 }}
+{{ +123 }}
+{{ +0x1A }}
+{{ +0b1111 }}
+
+{{ +0.0 }}
+{{ +2.71 }}
+{{ +1.0e3 }}
+{{ +.25e-1 }}
+{{ +.5e1 }}
+{{ +0xABC.123p+3 }}
+---
+(template
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (int_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal)
+  (text)
+  (float_literal))
+
+====================================
+Imaginary number literals.
+====================================
+{{ 5i }}
+{{ -5i }}
+{{ +5i }}
+{{ 3.14i }}
+{{ -2.71i }}
+{{ +0.5e1i }}
+{{ 0x1Fp10i }}
+{{ -0x1.fp-2i }}
+---
+(template
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal)
+  (text)
+  (imaginary_literal))

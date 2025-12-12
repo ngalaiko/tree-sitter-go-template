@@ -27,11 +27,9 @@ const PREC = {
         seq(/[1-9]/, optional(seq(optional('_'), decimalDigits)))
     ),
     binaryLiteral = seq('0', choice('b', 'B'), optional('_'), binaryDigits),
-    intLiteral = choice(
-        binaryLiteral,
-        decimalLiteral,
-        octalLiteral,
-        hexLiteral
+    intLiteral = seq(
+        optional(choice('-', '+')),
+        choice(binaryLiteral, decimalLiteral, octalLiteral, hexLiteral)
     ),
     decimalExponent = seq(
         choice('e', 'E'),
@@ -58,9 +56,25 @@ const PREC = {
         seq(optional('_'), hexDigits),
         seq('.', hexDigits)
     ),
-    hexFloatLiteral = seq('0', choice('x', 'X'), hexMantissa, hexExponent),
-    floatLiteral = choice(decimalFloatLiteral, hexFloatLiteral),
-    imaginaryLiteral = seq(choice(decimalDigits, intLiteral, floatLiteral), 'i')
+    hexFloatLiteral = seq(
+        optional(choice('-', '+')),
+        '0',
+        choice('x', 'X'),
+        hexMantissa,
+        hexExponent
+    ),
+    floatLiteral = seq(
+        optional(choice('-', '+')),
+        choice(decimalFloatLiteral, hexFloatLiteral)
+    ),
+    imaginaryLiteral = seq(
+        choice(
+            seq(optional(choice('-', '+')), decimalDigits),
+            intLiteral,
+            floatLiteral
+        ),
+        'i'
+    )
 
 module.exports = function make_grammar(dialect) {
     return grammar({
