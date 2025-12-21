@@ -114,3 +114,13 @@ Selector expression on a parenthesized pipeline
       (function_call
         (identifier)))
     (field_identifier)))
+
+====================================
+Selector expression on a function call
+====================================
+{{ pipeline.Field }}
+---
+(template
+    (selector_expression
+        (identifier)
+        (field_identifier)))
