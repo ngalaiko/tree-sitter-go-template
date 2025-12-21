@@ -362,7 +362,8 @@ module.exports = function make_grammar(dialect) {
                                 $.parenthesized_pipeline,
                                 $.field,
                                 $.variable,
-                                $.selector_expression
+                                $.selector_expression,
+                                $.identifier
                             )
                         ),
                         token.immediate('.'),
