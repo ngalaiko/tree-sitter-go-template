@@ -1893,6 +1893,10 @@
             "named": true
           },
           {
+            "type": "identifier",
+            "named": true
+          },
+          {
             "type": "parenthesized_pipeline",
             "named": true
           },

@@ -1020,6 +1020,10 @@
                 {
                   "type": "SYMBOL",
                   "name": "selector_expression"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
                 }
               ]
             }
