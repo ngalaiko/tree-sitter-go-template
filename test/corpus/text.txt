@@ -10,16 +10,18 @@ Valid curly brackets combination inside text block
     }}}
 {{ end }}
 ---
+
 (template
-    (if_action
-        (function_call (identifier))
-        (text)
-        (text)
-        (text)
-        (text)
-        (text)
-        (text)
-        (text)))
+  (if_action
+    (function_call
+      (identifier))
+    (text)
+    (text)
+    (text)
+    (text)
+    (text)
+    (text)
+    (text)))
 
 ====================================
 Invalid curly brackets combination inside text block
@@ -28,11 +30,13 @@ Invalid curly brackets combination inside text block
     {{
 {{ end }}
 ---
+
 (template
-    (if_action
-        (function_call (identifier))
-        (text)
-        (ERROR)))
+  (if_action
+    (function_call
+      (identifier))
+    (text)
+    (ERROR)))
 
 ====================================
 No injection text
@@ -40,6 +44,7 @@ No injection text
 foo:
   bar: {{ .Values.foo.bar }}-{{ .Values.foo.bar }}
 ---
+
 (template
   (text)
   (selector_expression
@@ -62,5 +67,161 @@ Normal text
 this:
   - is a yaml-list
 ---
+
 (template
+  (text))
+
+====================================
+Valid single curly bracket inside single line text
+====================================
+test: "helloWorld{"
+---
+
+(template
+  (text)
+  (text)
+  (text))
+
+====================================
+Multiple curly brackets inside single line text
+====================================
+test: "{he{l}}loWorld{"
+---
+
+(template
+  (text)
+  (text)
+  (text)
+  (text)
+  (text)
+  (text)
+  (text))
+
+====================================
+Valid text surrounded by single curly brackets
+====================================
+hello: "{world}"
+---
+
+(template
+  (text)
+  (text)
+  (text))
+
+====================================
+Key value text with variable
+====================================
+hello: "{{ .world }} test"
+---
+
+(template
+  (text)
+  (field
+    (identifier))
+  (text))
+
+====================================
+Multi-line text line-break
+====================================
+image: "{{ .Values.image }}"
+test: "value"
+---
+
+(template
+  (text)
+  (selector_expression
+    (field
+      (identifier))
+    (field_identifier))
+  (text))
+
+====================================
+Plain Key-Value Pairs
+====================================
+apiVersion: apps/v1
+kind: Deployment
+---
+
+(template
+  (text))
+
+====================================
+Key-Value Pair with whitespace in quote
+====================================
+foo: "bar "
+---
+
+(template
+  (text))
+
+====================================
+Key-Value Pairs with quotes
+====================================
+hello: "world"
+foo: "bar"
+---
+
+(template
+  (text))
+
+====================================
+Multi-Element Array
+====================================
+arr: [ "this{", "is" ]
+---
+
+(template
+  (text)
+  (text)
+  (text))
+
+====================================
+Empty object in YAML mapping
+====================================
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+---
+
+(template
+  (text)
+  (text)
+  (text))
+
+====================================
+Empty object in flow list
+====================================
+items: [ {} ]
+---
+
+(template
+  (text)
+  (text)
+  (text))
+
+====================================
+Empty object in block list
+====================================
+items:
+  - {}
+---
+
+(template
+  (text)
+  (text))
+
+================================================================================
+Quoted empty object text
+================================================================================
+podSelector: "{}"
+---
+
+(template
+  (text)
+  (text)
   (text))

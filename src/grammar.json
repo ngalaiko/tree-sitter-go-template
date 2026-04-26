@@ -31,17 +31,8 @@
       "value": "-"
     },
     "text": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^{]+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\{"
-        }
-      ]
+      "type": "PATTERN",
+      "value": "([^{]|\\{[^{])+"
     },
     "_action": {
       "type": "PREC",

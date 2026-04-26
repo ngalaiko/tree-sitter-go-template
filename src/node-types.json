@@ -2147,11 +2147,6 @@
     }
   },
   {
-    "type": "text",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "variable",
     "named": true,
     "fields": {
@@ -2894,6 +2889,10 @@
   {
     "type": "template",
     "named": false
+  },
+  {
+    "type": "text",
+    "named": true
   },
   {
     "type": "true",
