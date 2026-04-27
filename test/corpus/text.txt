@@ -15,12 +15,6 @@ Valid curly brackets combination inside text block
   (if_action
     (function_call
       (identifier))
-    (text)
-    (text)
-    (text)
-    (text)
-    (text)
-    (text)
     (text)))
 
 ====================================
@@ -35,8 +29,12 @@ Invalid curly brackets combination inside text block
   (if_action
     (function_call
       (identifier))
-    (text)
     (ERROR)))
+    (ERROR))
+  (ERROR
+    (ERROR
+      (text
+          (ERROR))
 
 ====================================
 No injection text
@@ -78,8 +76,6 @@ test: "helloWorld{"
 ---
 
 (template
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -89,12 +85,6 @@ test: "{he{l}}loWorld{"
 ---
 
 (template
-  (text)
-  (text)
-  (text)
-  (text)
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -104,8 +94,6 @@ hello: "{world}"
 ---
 
 (template
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -171,8 +159,6 @@ arr: [ "this{", "is" ]
 ---
 
 (template
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -189,8 +175,6 @@ spec:
 ---
 
 (template
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -200,8 +184,6 @@ items: [ {} ]
 ---
 
 (template
-  (text)
-  (text)
   (text))
 
 ====================================
@@ -212,7 +194,6 @@ items:
 ---
 
 (template
-  (text)
   (text))
 
 ================================================================================
@@ -222,6 +203,4 @@ podSelector: "{}"
 ---
 
 (template
-  (text)
-  (text)
   (text))
