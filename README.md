@@ -42,15 +42,22 @@ More dialects could be added in the future (e.g. for html templates).
 ### Highlighting for the templated language
 
 To get proper highlighting for the language that is templated (e.g. html) you need to add injections for
-that language to `.config/nvim/queries/gotmpl/injections.scm`:
+that language.
+
+For NeoVim edit `~/.config/nvim/queries/gotmpl/injections.scm`.
+For Helix edit `~/.config/helix/runtime/queries/gotmpl/injections.scm`.
 
 ```scm
+;; extends
+
 ((text) @injection.content
  (#set! injection.language "html")
  (#set! injection.combined))
 ```
 
-Replace html with the tree-sitter name of your required language and make sure to install it with `:TSInstall`.
+Replace "html" with the tree-sitter name of your required language and make sure to install it with `:TSInstall`.
+
+Then ensure filetype detection is working, for html and NeoVim use ft=gotmpl, for Helix the fileextension .gotmpl should work.
 
 More advanced use cases would require adding more dialects (as done for helm).
 
