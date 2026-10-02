@@ -102,7 +102,12 @@ module.exports = function make_grammar(dialect) {
             text: (_) =>
                 choice(
                     // forbid '{{', the rest is valid
+                    // match non-'{' chars followed by '{}' as a single token so that
+                    // constructs like '- {}' are injected as one text node into the
+                    // YAML parser (prevents a lone '{' from breaking YAML highlighting)
+                    /[^{]+\{\}/,
                     /[^{]+/,
+                    /\{\}/,
                     /\{/
                 ),
 
