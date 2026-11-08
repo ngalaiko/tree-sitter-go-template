@@ -39,6 +39,17 @@ jobs:
                   go-version: '1.22.x'
             - run: go test -v ./bindings/go
 
+    test_rust_binding:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: true
+            matrix:
+                os: [macos-latest, ubuntu-latest]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: dtolnay/rust-toolchain@stable
+            - run: cargo test
+
     test_python_binding:
         runs-on: ${{ matrix.os }}
         strategy:
