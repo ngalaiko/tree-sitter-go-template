@@ -43,4 +43,15 @@ mod tests {
             .set_language(&super::LANGUAGE.into())
             .expect("Error loading go_template language");
     }
+
+    // The same check as in the Go binding's test.
+    #[test]
+    fn test_can_parse_template() {
+        let mut parser = tree_sitter::Parser::new();
+        parser
+            .set_language(&super::LANGUAGE.into())
+            .expect("Error loading go_template language");
+        let tree = parser.parse("{{ nil }}", None).expect("Error parsing code");
+        assert_eq!(tree.root_node().to_sexp(), "(template (nil))");
+    }
 }
